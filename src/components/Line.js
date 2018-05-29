@@ -28,6 +28,7 @@ export default class Line extends React.Component {
     worldEnd: PropTypes.number.isRequired,
     segments: PropTypes.array.isRequired,
     onAddSegment: PropTypes.func.isRequired,
+    onEditSegment: PropTypes.func.isRequired,
   };
 
   constructor(props) {
@@ -38,8 +39,11 @@ export default class Line extends React.Component {
     }
   }
 
-  onOpenForm = () => {
-    this.setState({isSegmentFormOpen: true});
+  onStartNewSegment = () => {
+    this.setState({
+      isSegmentFormOpen: true,
+      selectedSegment: null,
+    });
   };
 
   onHideForm = () => {
@@ -47,8 +51,22 @@ export default class Line extends React.Component {
   };
 
   onAddSegment = (params) => {
-    this.props.onAddSegment(params);
-    this.setState({isSegmentFormOpen: false});
+    if (this.state.selectedSegment) {
+      this.props.onEditSegment(params);
+    } else {
+      this.props.onAddSegment(params);
+    }
+    this.setState({
+      isSegmentFormOpen: false,
+      selectedSegment: null,
+    });
+  };
+
+  onSegmentSelect = segment => {
+    this.setState({
+      isSegmentFormOpen: true,
+      selectedSegment: segment,
+    });
   };
 
   render() {
@@ -58,26 +76,25 @@ export default class Line extends React.Component {
     return (
       <Root>
         <AddSegment
-          onClick={this.onOpenForm}
+          onClick={this.onStartNewSegment}
         >+</AddSegment>
         <LineGraph/>
         {segments.map(segment => (
           <Segment
-            title={segment.title}
-            start={segment.start}
-            end={segment.end}
+            segment={segment}
             worldStart={worldStart}
             worldEnd={worldEnd}
             key={segment.title}
+            onSelect={this.onSegmentSelect}
           />
         ))}
         {isSegmentFormOpen && (
           <SegmentEditForm
-            onAdd={this.onAddSegment}
+            segment={this.state.selectedSegment}
+            onSuccess={this.onAddSegment}
             onCancel={this.onHideForm}
           />
         )}
-
       </Root>
     )
   }

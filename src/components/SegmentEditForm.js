@@ -3,25 +3,26 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const Root = styled.div`
-margin-top: 10px;
-margin-bottom: 10px;
+padding: 10px;
 `;
 
 
 export default class SegmentEditForm extends React.Component {
 
   static propTypes = {
-    onAdd: PropTypes.func.isRequired,
+    segment: PropTypes.object,
+    onSuccess: PropTypes.func.isRequired,
     onCancel: PropTypes.func.isRequired,
   };
 
   constructor(props) {
     super(props);
 
+    const {segment} = props;
     this.state = {
-      title: '',
-      start: 0,
-      end: 0,
+      title: segment ? segment.title : '',
+      start: segment ? segment.start : 0,
+      end: segment ? segment.end : 0,
     }
   }
 
@@ -43,12 +44,17 @@ export default class SegmentEditForm extends React.Component {
     })
   };
 
-  onAdd = () => {
-    this.props.onAdd({
+  onSuccess = () => {
+    let result = {
       title: this.state.title,
       start: Number(this.state.start),
       end: Number(this.state.end),
-    })
+    };
+    if (this.props.segment) {
+      result.id = this.props.segment.id;
+      result.line = this.props.segment.line;
+    }
+    this.props.onSuccess(result);
   };
 
   render() {
@@ -76,7 +82,7 @@ export default class SegmentEditForm extends React.Component {
         </div>
         <div>
           <button
-            onClick={this.onAdd}
+            onClick={this.onSuccess}
           >Добавить</button>
           <button
             onClick={this.props.onCancel}

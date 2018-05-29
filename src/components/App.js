@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import copy from 'copy-to-clipboard';
+import _ from 'lodash';
 
 import Line from "./Line";
 import Footer from "./Footer";
@@ -44,7 +45,10 @@ class App extends Component {
   };
 
   onAddSegment = (lineId, {title, start, end}) => {
+    const ids = this.state.segments.map(line => line.id);
+    const nextId = Math.max(...ids) + 1;
     const newSegment = {
+      id: nextId,
       line: lineId,
       title,
       start,
@@ -53,6 +57,15 @@ class App extends Component {
     this.setState({
       segments: [...this.state.segments, newSegment]
     })
+  };
+
+  onEditSegment = (segmentCopy) => {
+    let index = _.findIndex(this.state.segments, {id: segmentCopy.id});
+    let copy = this.state.segments.slice();
+    copy[index] = segmentCopy;
+    this.setState({
+      segments: copy,
+    });
   };
 
   onSave = () => {
@@ -75,6 +88,7 @@ class App extends Component {
                 worldEnd={worldEnd}
                 segments={getLineSegments(line.id, segments)}
                 onAddSegment={(params) => this.onAddSegment(line.id, params)}
+                onEditSegment={params => this.onEditSegment(params)}
                 key={line.id}
               />
             ))}
