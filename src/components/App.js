@@ -84,6 +84,7 @@ class App extends Component {
           <LinesContainer>
             {lines.map(line => (
               <Line
+                id={line.id}
                 worldStart={worldStart}
                 worldEnd={worldEnd}
                 segments={getLineSegments(line.id, segments)}

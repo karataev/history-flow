@@ -23,6 +23,7 @@ export default class SegmentEditForm extends React.Component {
       title: segment ? segment.title : '',
       start: segment ? segment.start : 0,
       end: segment ? segment.end : 0,
+      lineId: segment ? segment.line : null,
     }
   }
 
@@ -44,6 +45,12 @@ export default class SegmentEditForm extends React.Component {
     })
   };
 
+  onLineChange = e => {
+    this.setState({
+      lineId: Number(e.target.value),
+    })
+  };
+
   onSuccess = () => {
     let result = {
       title: this.state.title,
@@ -52,12 +59,14 @@ export default class SegmentEditForm extends React.Component {
     };
     if (this.props.segment) {
       result.id = this.props.segment.id;
-      result.line = this.props.segment.line;
+      result.line = this.state.lineId;
     }
     this.props.onSuccess(result);
   };
 
   render() {
+    const {segment} = this.props;
+
     return (
       <Root>
         <div>
@@ -79,11 +88,21 @@ export default class SegmentEditForm extends React.Component {
             value={this.state.end}
             onChange={this.onEndChange}
           />
+          {segment && (
+            <input
+              type="number"
+              placeholder="Линия"
+              value={this.state.lineId}
+              onChange={this.onLineChange}
+            />
+          )}
         </div>
         <div>
           <button
             onClick={this.onSuccess}
-          >Добавить</button>
+          >
+            {segment ? 'Сохранить' : 'Добавить'}
+          </button>
           <button
             onClick={this.props.onCancel}
           >Отмена</button>

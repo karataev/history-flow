@@ -18,12 +18,24 @@ background: #ddd;
 const AddSegment = styled.button`
 position: absolute;
 top: -10px;
-left: 0;
+left: 10px;
+`;
+
+const LineNumber = styled.div`
+position: absolute;
+top: -8px;
+left: -8px;
+border-radius: 50%;
+background: #fff;
+font-size: 12px;
+border: 1px solid black;
+padding: 2px;
 `;
 
 export default class Line extends React.Component {
 
   static propTypes = {
+    id: PropTypes.number.isRequired,
     worldStart: PropTypes.number.isRequired,
     worldEnd: PropTypes.number.isRequired,
     segments: PropTypes.array.isRequired,
@@ -70,11 +82,12 @@ export default class Line extends React.Component {
   };
 
   render() {
-    const {worldStart, worldEnd, segments} = this.props;
+    const {id, worldStart, worldEnd, segments} = this.props;
     const {isSegmentFormOpen} = this.state;
 
     return (
       <Root>
+        <LineNumber>{id}</LineNumber>
         <AddSegment
           onClick={this.onStartNewSegment}
         >+</AddSegment>
