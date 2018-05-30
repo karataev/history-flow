@@ -51,7 +51,9 @@ export default class SegmentEditForm extends React.Component {
     })
   };
 
-  onSuccess = () => {
+  onSubmit = e => {
+    e.preventDefault();
+
     let result = {
       title: this.state.title,
       start: Number(this.state.start),
@@ -69,44 +71,45 @@ export default class SegmentEditForm extends React.Component {
 
     return (
       <Root>
-        <div>
-          <input
-            type="text"
-            placeholder="Имя"
-            value={this.state.title}
-            onChange={this.onTitleChange}
-          />
-          <input
-            type="number"
-            placeholder="Год рождения"
-            value={this.state.start}
-            onChange={this.onStartChange}
-          />
-          <input
-            type="number"
-            placeholder="Год смерти"
-            value={this.state.end}
-            onChange={this.onEndChange}
-          />
-          {segment && (
+        <form onSubmit={this.onSubmit}>
+          <div>
+            <input
+              type="text"
+              placeholder="Имя"
+              value={this.state.title}
+              onChange={this.onTitleChange}
+            />
             <input
               type="number"
-              placeholder="Линия"
-              value={this.state.lineId}
-              onChange={this.onLineChange}
+              placeholder="Год рождения"
+              value={this.state.start}
+              onChange={this.onStartChange}
             />
-          )}
-        </div>
-        <div>
-          <button
-            onClick={this.onSuccess}
-          >
-            {segment ? 'Сохранить' : 'Добавить'}
-          </button>
-          <button
-            onClick={this.props.onCancel}
-          >Отмена</button>
-        </div>
+            <input
+              type="number"
+              placeholder="Год смерти"
+              value={this.state.end}
+              onChange={this.onEndChange}
+            />
+            {segment && (
+              <input
+                type="number"
+                placeholder="Линия"
+                value={this.state.lineId}
+                onChange={this.onLineChange}
+              />
+            )}
+          </div>
+          <div>
+            <button type="submit">
+              {segment ? 'Сохранить' : 'Добавить'}
+            </button>
+            <button
+              type="button"
+              onClick={this.props.onCancel}
+            >Отмена</button>
+          </div>
+        </form>
       </Root>
     )
   }

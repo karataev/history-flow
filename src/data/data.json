@@ -1,5 +1,5 @@
 {
-  "worldStart": 1600,
+  "worldStart": 1580,
   "worldEnd": 1900,
   "lines": [
     {
@@ -43,6 +43,12 @@
     },
     {
       "id": 14
+    },
+    {
+      "id": 15
+    },
+    {
+      "id": 16
     }
   ],
   "segments": [
@@ -51,91 +57,126 @@
       "start": 1739,
       "end": 1791,
       "id": 1,
-      "line": 13
+      "line": 15
     },
     {
-      "line": 2,
       "title": "Екатерина II",
       "start": 1729,
       "end": 1796,
-      "id": 2
+      "id": 2,
+      "line": 11
     },
     {
       "title": "Григорий Орлов",
       "start": 1734,
       "end": 1783,
       "id": 3,
-      "line": 14
+      "line": 16
     },
     {
-      "line": 4,
       "title": "Петр III",
       "start": 1728,
       "end": 1762,
-      "id": 4
+      "id": 4,
+      "line": 10
     },
     {
-      "line": 5,
       "title": "Павел I",
       "start": 1754,
       "end": 1801,
-      "id": 5
+      "id": 5,
+      "line": 12
     },
     {
-      "line": 2,
       "title": "Петр I",
       "start": 1672,
       "end": 1725,
-      "id": 6
+      "id": 6,
+      "line": 5
     },
     {
-      "line": 6,
       "title": "Екатерина I",
       "start": 1684,
       "end": 1727,
-      "id": 7
+      "id": 7,
+      "line": 6
     },
     {
-      "line": 7,
       "title": "Анна Иоанновна",
       "start": 1693,
       "end": 1740,
-      "id": 8
+      "id": 8,
+      "line": 8
     },
     {
-      "line": 8,
       "title": "Елизавета Петровна",
       "start": 1709,
       "end": 1762,
-      "id": 9
+      "id": 9,
+      "line": 9
     },
     {
-      "line": 9,
       "title": "Александр I",
       "start": 1777,
       "end": 1825,
-      "id": 10
+      "id": 10,
+      "line": 13
     },
     {
-      "line": 10,
       "title": "Николай I",
       "start": 1796,
       "end": 1855,
-      "id": 11
+      "id": 11,
+      "line": 14
     },
     {
-      "line": 11,
       "title": "Александр II",
       "start": 1818,
       "end": 1881,
-      "id": 12
+      "id": 12,
+      "line": 15
     },
     {
-      "line": 12,
       "title": "Александр III",
       "start": 1845,
       "end": 1894,
-      "id": 13
+      "id": 13,
+      "line": 16
+    },
+    {
+      "id": 14,
+      "line": 1,
+      "title": "Михаил Федорович",
+      "start": 1596,
+      "end": 1645
+    },
+    {
+      "id": 15,
+      "line": 2,
+      "title": "Алексей Михайлович",
+      "start": 1629,
+      "end": 1676
+    },
+    {
+      "id": 16,
+      "line": 3,
+      "title": "Федор III Алексеевич",
+      "start": 1661,
+      "end": 1682
+    },
+    {
+      "title": "Софья Алексеевна",
+      "start": 1657,
+      "end": 1704,
+      "id": 17,
+      "line": 4
+    },
+    {
+      "title": "Петр II",
+      "start": 1715,
+      "end": 1730,
+      "id": 18,
+      "line": 7
     }
   ]
 }
