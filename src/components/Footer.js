@@ -18,7 +18,7 @@ export default class Footer extends React.Component {
       <Root>
         <button
           onClick={this.props.onAddLine}
-        >Добавить линию</button>
+        >Добавить личность</button>
         <button
           onClick={this.props.onSave}
         >Сохранить</button>

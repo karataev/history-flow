@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import copy from 'copy-to-clipboard';
 import _ from 'lodash';
 
-import Line from "./Line";
 import Footer from "./Footer";
+import Fiber from "./Fiber";
 
 const Root = styled.div`
 `;
@@ -23,10 +23,6 @@ border: 1px solid #666;
 flex-grow: 1;
 `;
 
-function getLineSegments(lineId, segments) {
-  return segments.filter(segment => segment.line === lineId);
-}
-
 class App extends Component {
 
   constructor(props) {
@@ -36,7 +32,7 @@ class App extends Component {
   }
 
   onAddLine = () => {
-    const ids = this.state.lines.map(line => line.id);
+    const ids = this.state.segments.map(line => line.id);
     const nextId = Math.max(...ids) + 1;
     const newLine = {id: nextId};
     this.setState({
@@ -75,22 +71,20 @@ class App extends Component {
   };
 
   render() {
-    const {worldStart, worldEnd, lines, segments} = this.state;
+    const {worldStart, worldEnd, segments} = this.state;
+    const sortedSegments = _.sortBy(segments, 'start');
 
     return (
       <Root>
         <Content>
           <Year>{worldStart}</Year>
           <LinesContainer>
-            {lines.map(line => (
-              <Line
-                id={line.id}
+            {sortedSegments.map(segment => (
+              <Fiber
+                data={segment}
                 worldStart={worldStart}
                 worldEnd={worldEnd}
-                segments={getLineSegments(line.id, segments)}
-                onAddSegment={(params) => this.onAddSegment(line.id, params)}
-                onEditSegment={params => this.onEditSegment(params)}
-                key={line.id}
+                key={segment.id}
               />
             ))}
           </LinesContainer>
