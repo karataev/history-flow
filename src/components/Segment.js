@@ -31,29 +31,22 @@ border-radius: 50%;
 export default class Segment extends React.Component {
 
   static propTypes = {
-    segment: PropTypes.object.isRequired,
-    worldStart: PropTypes.number.isRequired,
-    worldEnd: PropTypes.number.isRequired,
-    onSelect: PropTypes.func.isRequired,
+    title: PropTypes.string.isRequired,
+    startPercent: PropTypes.number.isRequired,
+    endPercent: PropTypes.number.isRequired,
   };
 
   render() {
-    const {segment, worldStart, worldEnd} = this.props;
-    const worldLength = worldEnd - worldStart;
-    const startPercent = Math.round((segment.start - worldStart) / worldLength * 100);
-    const endPercent = 100 - Math.round((segment.end - worldStart) / worldLength * 100);
+    const {title, startPercent, endPercent} = this.props;
 
     return (
       <Root
         start={startPercent}
         end={endPercent}
-        onClick={() => this.props.onSelect(segment)}
       >
         <Point pos={0} />
         <Point pos={100} />
-        <Title>
-          {segment.title}
-        </Title>
+        <Title>{title}</Title>
       </Root>
     )
   }

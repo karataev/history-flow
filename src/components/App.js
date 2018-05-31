@@ -5,6 +5,7 @@ import _ from 'lodash';
 
 import Footer from "./Footer";
 import Fiber from "./Fiber";
+import SegmentEditForm from "./SegmentEditForm";
 
 const Root = styled.div`
 `;
@@ -31,37 +32,20 @@ class App extends Component {
     this.state = require('../data/data');
   }
 
-  onAddLine = () => {
-    const ids = this.state.segments.map(line => line.id);
+  onAddFiber = () => {
+    const ids = this.state.segments.map(segment => segment.id);
     const nextId = Math.max(...ids) + 1;
-    const newLine = {id: nextId};
-    this.setState({
-      lines: [...this.state.lines, newLine],
-    });
-  };
-
-  onAddSegment = (lineId, {title, start, end}) => {
-    const ids = this.state.segments.map(line => line.id);
-    const nextId = Math.max(...ids) + 1;
-    const newSegment = {
+    let editSegment = {
       id: nextId,
-      line: lineId,
-      title,
-      start,
-      end,
+      title: 'foo',
+      start: 0,
+      end: 0,
     };
-    this.setState({
-      segments: [...this.state.segments, newSegment]
-    })
+    this.setState({editSegment});
   };
 
-  onEditSegment = (segmentCopy) => {
-    let index = _.findIndex(this.state.segments, {id: segmentCopy.id});
-    let copy = this.state.segments.slice();
-    copy[index] = segmentCopy;
-    this.setState({
-      segments: copy,
-    });
+  onEditFiber = segment => {
+    this.setState({editSegment: segment});
   };
 
   onSave = () => {
@@ -70,8 +54,28 @@ class App extends Component {
     copy(json);
   };
 
+  onEditSuccess = (editedSegment) => {
+    const {segments} = this.state;
+    const index = _.findIndex(segments, {id: editedSegment.id});
+    let newSegments;
+    if (index === -1) {
+      newSegments = [...segments, editedSegment];
+    } else {
+      newSegments = [...segments.slice(0, index), editedSegment, ...segments.slice(index + 1)];
+    }
+
+    this.setState({
+      segments: newSegments,
+      editSegment: null,
+    });
+  };
+
+  onEditCancel = () => {
+    this.setState({editSegment: null});
+  };
+
   render() {
-    const {worldStart, worldEnd, segments} = this.state;
+    const {worldStart, worldEnd, segments, editSegment} = this.state;
     const sortedSegments = _.sortBy(segments, 'start');
 
     return (
@@ -84,14 +88,22 @@ class App extends Component {
                 data={segment}
                 worldStart={worldStart}
                 worldEnd={worldEnd}
+                onEdit={this.onEditFiber}
                 key={segment.id}
               />
             ))}
           </LinesContainer>
           <Year>{worldEnd}</Year>
         </Content>
+        {editSegment && (
+          <SegmentEditForm
+            segment={editSegment}
+            onSuccess={this.onEditSuccess}
+            onCancel={this.onEditCancel}
+          />
+        )}
         <Footer
-          onAddLine={this.onAddLine}
+          onAddFiber={this.onAddFiber}
           onSave={this.onSave}
         />
       </Root>

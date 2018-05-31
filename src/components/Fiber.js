@@ -22,20 +22,24 @@ export default class Fiber extends React.Component {
     data: PropTypes.object.isRequired,
     worldStart: PropTypes.number.isRequired,
     worldEnd: PropTypes.number.isRequired,
+    onEdit: PropTypes.func.isRequired,
   };
 
   render() {
     const {data, worldStart, worldEnd} = this.props;
 
+    const worldLength = worldEnd - worldStart;
+    const startPercent = Math.round((data.start - worldStart) / worldLength * 100);
+    const endPercent = 100 - Math.round((data.end - worldStart) / worldLength * 100);
+
     return (
-      <Root>
+      <Root onClick={() => this.props.onEdit(data)}>
         <LineGraph/>
         <Segment
-          segment={data}
-          worldStart={worldStart}
-          worldEnd={worldEnd}
+          startPercent={startPercent}
+          endPercent={endPercent}
+          title={data.title}
           key={data.id}
-          onSelect={() => console.log('todo: edit segment')}
         />
       </Root>
     )

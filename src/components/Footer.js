@@ -9,7 +9,7 @@ margin-top: 10px;
 export default class Footer extends React.Component {
 
   static propTypes = {
-    onAddLine: PropTypes.func.isRequired,
+    onAddFiber: PropTypes.func.isRequired,
     onSave: PropTypes.func.isRequired,
   };
 
@@ -17,7 +17,7 @@ export default class Footer extends React.Component {
     return (
       <Root>
         <button
-          onClick={this.props.onAddLine}
+          onClick={this.props.onAddFiber}
         >Добавить личность</button>
         <button
           onClick={this.props.onSave}
