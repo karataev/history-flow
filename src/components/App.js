@@ -25,6 +25,11 @@ border: 1px solid #666;
 overflow: hidden;
 `;
 
+function getNextId(collection) {
+  const ids = collection.map(segment => segment.id);
+  return Math.max(...ids) + 1;
+}
+
 class App extends Component {
 
   constructor(props) {
@@ -32,28 +37,19 @@ class App extends Component {
 
     let state = require('../data/data');
     state.segments = _.sortBy(state.segments, 'start');
-    let allNames = state.segments.map(segment => segment.title);
 
-    state.groups = [
-      {
-        id: 1,
-        title: 'Правители Российского государства',
-        names: ['Рюрик', 'Юрий Долгорукий'],
-      },
-      {
-        id: 2,
-        title: 'Весь список',
-        names: allNames,
-      }
-    ];
+    const allPersonsGroup = {
+      id: getNextId(state.groups),
+      title: 'Весь список',
+      ids: state.segments.map(segment => segment.id),
+    };
+    state.groups.push(allPersonsGroup);
     this.state = state;
   }
 
   onAddFiber = () => {
-    const ids = this.state.segments.map(segment => segment.id);
-    const nextId = Math.max(...ids) + 1;
     let editSegment = {
-      id: nextId,
+      id: getNextId(this.state.segments),
       title: 'foo',
       start: 0,
       end: 0,
@@ -66,7 +62,9 @@ class App extends Component {
   };
 
   onSave = () => {
-    const json = JSON.stringify(this.state, null, 2);
+    let copyState = JSON.parse(JSON.stringify(this.state));
+    copyState.groups = copyState.groups.filter(group => group.title !== 'Весь список');
+    const json = JSON.stringify(copyState, null, 2);
     console.log(json);
     copy(json);
   };

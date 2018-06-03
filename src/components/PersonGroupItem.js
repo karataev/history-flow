@@ -21,7 +21,7 @@ export default class PersonGroupItem extends React.Component {
             checked={person.visible}
             onChange={() => this.props.onToggle(person.id)}
           />
-          {person.title} ({person.start}-{person.end})
+          {person.id}. {person.title} ({person.start}-{person.end})
         </label>
       </div>
     )

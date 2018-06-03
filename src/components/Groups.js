@@ -9,9 +9,9 @@ const Root = styled.div`
 display: flex;
 `;
 
-function getGroupPersons(allPersons, personNames) {
-  return personNames.map(name => {
-    return _.find(allPersons, {title: name});
+function getGroupPersons(allPersons, personIds) {
+  return personIds.map(id => {
+    return _.find(allPersons, {id});
   })
 }
 
@@ -33,7 +33,7 @@ export default class Groups extends React.Component {
         {groups.map(group => (
           <PersonGroup
             title={group.title}
-            persons={getGroupPersons(allPersons, group.names)}
+            persons={getGroupPersons(allPersons, group.ids)}
             onPersonToggle={this.props.onPersonToggle}
             onSelectAll={() => this.props.onSelectGroup(group.id)}
             onClearAll={() => this.props.onClearGroup(group.id)}
