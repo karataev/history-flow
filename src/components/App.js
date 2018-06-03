@@ -6,7 +6,7 @@ import _ from 'lodash';
 import Footer from "./Footer";
 import Fiber from "./Fiber";
 import SegmentEditForm from "./SegmentEditForm";
-import PersonList from "./PersonList";
+import Groups from "./Groups";
 
 const Root = styled.div`
 `;
@@ -31,6 +31,21 @@ class App extends Component {
     super(props);
 
     let state = require('../data/data');
+    state.segments = _.sortBy(state.segments, 'start');
+    let allNames = state.segments.map(segment => segment.title);
+
+    state.groups = [
+      {
+        id: 1,
+        title: 'Правители Российского государства',
+        names: ['Рюрик', 'Юрий Долгорукий'],
+      },
+      {
+        id: 2,
+        title: 'Весь список',
+        names: allNames,
+      }
+    ];
     this.state = state;
   }
 
@@ -85,15 +100,25 @@ class App extends Component {
     this.setState({segments: newSegments});
   };
 
-  onSelectAll = () => {
+  onSelectGroup = groupId => {
+    let group = _.find(this.state.groups, {id: groupId});
+
     const newSegments = this.state.segments.map(segment => {
+      const isInGroup = group.names.includes(segment.title);
+      if (!isInGroup) return segment;
+
       return {...segment, visible: true}
     });
     this.setState({segments: newSegments});
   };
 
-  onClearAll = () => {
+  onClearGroup = groupId => {
+    let group = _.find(this.state.groups, {id: groupId});
+
     const newSegments = this.state.segments.map(segment => {
+      const isInGroup = group.names.includes(segment.title);
+      if (!isInGroup) return segment;
+
       return {...segment, visible: false}
     });
     this.setState({segments: newSegments});
@@ -101,9 +126,8 @@ class App extends Component {
 
 
   render() {
-    const {worldStart, worldEnd, segments, editSegment} = this.state;
-    const sortedPersons = _.sortBy(segments, 'start');
-    const visiblePersons = sortedPersons.filter(segment => segment.visible);
+    const {worldStart, worldEnd, segments, editSegment, groups} = this.state;
+    const visiblePersons = segments.filter(segment => segment.visible);
 
     return (
       <Root>
@@ -133,11 +157,12 @@ class App extends Component {
           onAddFiber={this.onAddFiber}
           onSave={this.onSave}
         />
-        <PersonList
-          persons={sortedPersons}
+        <Groups
+          groups={groups}
+          allPersons={segments}
           onPersonToggle={this.onPersonToggle}
-          onSelectAll={this.onSelectAll}
-          onClearAll={this.onClearAll}
+          onSelectGroup={this.onSelectGroup}
+          onClearGroup={this.onClearGroup}
         />
       </Root>
     );

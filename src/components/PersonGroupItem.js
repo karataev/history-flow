@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 
-export default class PersonListItem extends React.Component {
+export default class PersonGroupItem extends React.Component {
 
   static propTypes = {
     person: PropTypes.object.isRequired,

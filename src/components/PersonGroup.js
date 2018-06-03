@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import PersonGroupItem from "./PersonGroupItem";
 import styled from 'styled-components';
-import PersonListItem from "./PersonListItem";
 
 const Root = styled.div`
 margin-top: 10px;
@@ -13,9 +13,10 @@ const ButtonsContainer = styled.div`
 margin-bottom: 10px;
 `;
 
-export default class PersonList extends React.Component {
+export default class PersonGroup extends React.Component {
 
   static propTypes = {
+    title: PropTypes.string.isRequired,
     persons: PropTypes.array.isRequired,
     onPersonToggle: PropTypes.func.isRequired,
     onSelectAll: PropTypes.func.isRequired,
@@ -23,10 +24,11 @@ export default class PersonList extends React.Component {
   };
 
   render() {
-    const {persons} = this.props;
+    const {title, persons} = this.props;
 
     return (
       <Root>
+        <h3>{title}</h3>
         <ButtonsContainer>
           <button
             onClick={this.props.onSelectAll}
@@ -37,11 +39,11 @@ export default class PersonList extends React.Component {
         </ButtonsContainer>
         <div>
           {persons.map(person => (
-            <PersonListItem
+            <PersonGroupItem
               person={person}
               onToggle={this.props.onPersonToggle}
               key={person.id}
-            />
+            >{person.title}</PersonGroupItem>
           ))}
         </div>
       </Root>
