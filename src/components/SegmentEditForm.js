@@ -26,6 +26,10 @@ export default class SegmentEditForm extends React.Component {
     }
   }
 
+  componentDidMount() {
+    this.nameEl.focus();
+  }
+
   onTitleChange = e => {
     this.setState({
       title: e.target.value,
@@ -51,6 +55,7 @@ export default class SegmentEditForm extends React.Component {
       title: this.state.title,
       start: Number(this.state.start),
       end: Number(this.state.end),
+      visible: true,
     };
     if (this.props.segment) {
       result.id = this.props.segment.id;
@@ -66,6 +71,7 @@ export default class SegmentEditForm extends React.Component {
         <form onSubmit={this.onSubmit}>
           <div>
             <input
+              ref={el => this.nameEl = el}
               type="text"
               placeholder="Имя"
               value={this.state.title}

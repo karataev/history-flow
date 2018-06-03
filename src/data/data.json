@@ -1,114 +1,252 @@
 {
-  "worldStart": 1580,
-  "worldEnd": 1900,
+  "worldStart": 800,
+  "worldEnd": 1920,
   "segments": [
     {
       "id": 1,
       "title": "Григорий Потёмкин",
       "start": 1739,
-      "end": 1791
+      "end": 1791,
+      "visible": false
     },
     {
       "id": 2,
       "title": "Екатерина II",
       "start": 1729,
-      "end": 1796
+      "end": 1796,
+      "visible": true
     },
     {
       "id": 3,
       "title": "Григорий Орлов",
       "start": 1734,
-      "end": 1783
+      "end": 1783,
+      "visible": false
     },
     {
       "id": 4,
       "title": "Петр III",
       "start": 1728,
-      "end": 1762
+      "end": 1762,
+      "visible": true
     },
     {
       "id": 5,
       "title": "Павел I",
       "start": 1754,
-      "end": 1801
+      "end": 1801,
+      "visible": true
     },
     {
       "id": 6,
       "title": "Петр I",
       "start": 1672,
-      "end": 1725
+      "end": 1725,
+      "visible": true
     },
     {
       "id": 7,
       "title": "Екатерина I",
       "start": 1684,
-      "end": 1727
+      "end": 1727,
+      "visible": true
     },
     {
       "id": 8,
       "title": "Анна Иоанновна",
       "start": 1693,
-      "end": 1740
+      "end": 1740,
+      "visible": true
     },
     {
       "id": 9,
       "title": "Елизавета Петровна",
       "start": 1709,
-      "end": 1762
+      "end": 1762,
+      "visible": true
     },
     {
       "id": 10,
       "title": "Александр I",
       "start": 1777,
-      "end": 1825
+      "end": 1825,
+      "visible": true
     },
     {
       "id": 11,
       "title": "Николай I",
       "start": 1796,
-      "end": 1855
+      "end": 1855,
+      "visible": true
     },
     {
       "id": 12,
       "title": "Александр II",
       "start": 1818,
-      "end": 1881
+      "end": 1881,
+      "visible": true
     },
     {
       "id": 13,
       "title": "Александр III",
       "start": 1845,
-      "end": 1894
+      "end": 1894,
+      "visible": true
     },
     {
       "id": 14,
       "title": "Михаил Федорович",
       "start": 1596,
-      "end": 1645
+      "end": 1645,
+      "visible": true
     },
     {
       "id": 15,
       "title": "Алексей Михайлович",
       "start": 1629,
-      "end": 1676
+      "end": 1676,
+      "visible": true
     },
     {
       "id": 16,
       "title": "Федор III Алексеевич",
       "start": 1661,
-      "end": 1682
+      "end": 1682,
+      "visible": false
     },
     {
       "id": 17,
       "title": "Софья Алексеевна",
       "start": 1657,
-      "end": 1704
+      "end": 1704,
+      "visible": false
     },
     {
       "id": 18,
       "title": "Петр II",
       "start": 1715,
-      "end": 1730
+      "end": 1730,
+      "visible": true
+    },
+    {
+      "title": "Николай II",
+      "start": 1868,
+      "end": 1918,
+      "visible": true,
+      "id": 19
+    },
+    {
+      "title": "Иван VI",
+      "start": 1740,
+      "end": 1764,
+      "visible": true,
+      "id": 20
+    },
+    {
+      "title": "Василий IV Шуйский",
+      "start": 1552,
+      "end": 1612,
+      "visible": true,
+      "id": 21
+    },
+    {
+      "title": "Борис Годунов",
+      "start": 1552,
+      "end": 1605,
+      "visible": true,
+      "id": 22
+    },
+    {
+      "title": "Ирина Годунова",
+      "start": 1557,
+      "end": 1603,
+      "visible": true,
+      "id": 23
+    },
+    {
+      "title": "Федор I Иванович",
+      "start": 1557,
+      "end": 1598,
+      "visible": true,
+      "id": 24
+    },
+    {
+      "title": "Иван IV Грозный",
+      "start": 1530,
+      "end": 1584,
+      "visible": true,
+      "id": 25
+    },
+    {
+      "title": "Иван III",
+      "start": 1479,
+      "end": 1533,
+      "visible": true,
+      "id": 26
+    },
+    {
+      "title": "Дмитрий Донской",
+      "start": 1350,
+      "end": 1389,
+      "visible": true,
+      "id": 27
+    },
+    {
+      "title": "Иван I Калита",
+      "start": 1283,
+      "end": 1340,
+      "visible": true,
+      "id": 28
+    },
+    {
+      "title": "Даниил Александрович",
+      "start": 1261,
+      "end": 1303,
+      "visible": true,
+      "id": 29
+    },
+    {
+      "title": "Александр Невский",
+      "start": 1221,
+      "end": 1263,
+      "visible": true,
+      "id": 30
+    },
+    {
+      "title": "Всеволод Большое Гнездо",
+      "start": 1154,
+      "end": 1212,
+      "visible": true,
+      "id": 31
+    },
+    {
+      "title": "Юрий Долгорукий",
+      "start": 1095,
+      "end": 1157,
+      "visible": true,
+      "id": 32
+    },
+    {
+      "title": "Владимир Мономах",
+      "start": 1053,
+      "end": 1125,
+      "visible": true,
+      "id": 33
+    },
+    {
+      "title": "Владимир Святославович",
+      "start": 960,
+      "end": 1015,
+      "visible": true,
+      "id": 34
+    },
+    {
+      "title": "Рюрик",
+      "start": 820,
+      "end": 879,
+      "visible": true,
+      "id": 35
     }
-  ]
+  ],
+  "editSegment": null
 }

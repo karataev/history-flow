@@ -6,6 +6,7 @@ import _ from 'lodash';
 import Footer from "./Footer";
 import Fiber from "./Fiber";
 import SegmentEditForm from "./SegmentEditForm";
+import PersonList from "./PersonList";
 
 const Root = styled.div`
 `;
@@ -29,7 +30,8 @@ class App extends Component {
   constructor(props) {
     super(props);
 
-    this.state = require('../data/data');
+    let state = require('../data/data');
+    this.state = state;
   }
 
   onAddFiber = () => {
@@ -74,16 +76,26 @@ class App extends Component {
     this.setState({editSegment: null});
   };
 
+  onPersonToggle = (personId) => {
+    const {segments} = this.state;
+    const index = _.findIndex(segments, {id: personId});
+    let person = _.find(segments, {id: personId});
+    person.visible = !person.visible;
+    let newSegments = [...segments.slice(0, index), person, ...segments.slice(index + 1)];
+    this.setState({segments: newSegments});
+  };
+
   render() {
     const {worldStart, worldEnd, segments, editSegment} = this.state;
-    const sortedSegments = _.sortBy(segments, 'start');
+    const sortedPersons = _.sortBy(segments, 'start');
+    const visiblePersons = sortedPersons.filter(segment => segment.visible);
 
     return (
       <Root>
         <Content>
           <Year>{worldStart}</Year>
           <LinesContainer>
-            {sortedSegments.map(segment => (
+            {visiblePersons.map(segment => (
               <Fiber
                 data={segment}
                 worldStart={worldStart}
@@ -105,6 +117,10 @@ class App extends Component {
         <Footer
           onAddFiber={this.onAddFiber}
           onSave={this.onSave}
+        />
+        <PersonList
+          persons={sortedPersons}
+          onPersonToggle={this.onPersonToggle}
         />
       </Root>
     );
