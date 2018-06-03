@@ -11,9 +11,9 @@ import PersonList from "./PersonList";
 const Root = styled.div`
 `;
 
-const Content = styled.div`
+const YearContainer = styled.div`
 display: flex;
-align-items: center;
+justify-content: space-between;
 `;
 
 const Year = styled.div`
@@ -22,7 +22,7 @@ padding: 10px;
 
 const LinesContainer = styled.div`
 border: 1px solid #666;
-flex-grow: 1;
+overflow: hidden;
 `;
 
 class App extends Component {
@@ -85,6 +85,21 @@ class App extends Component {
     this.setState({segments: newSegments});
   };
 
+  onSelectAll = () => {
+    const newSegments = this.state.segments.map(segment => {
+      return {...segment, visible: true}
+    });
+    this.setState({segments: newSegments});
+  };
+
+  onClearAll = () => {
+    const newSegments = this.state.segments.map(segment => {
+      return {...segment, visible: false}
+    });
+    this.setState({segments: newSegments});
+  };
+
+
   render() {
     const {worldStart, worldEnd, segments, editSegment} = this.state;
     const sortedPersons = _.sortBy(segments, 'start');
@@ -92,21 +107,21 @@ class App extends Component {
 
     return (
       <Root>
-        <Content>
+        <LinesContainer>
+          {visiblePersons.map(segment => (
+            <Fiber
+              data={segment}
+              worldStart={worldStart}
+              worldEnd={worldEnd}
+              onEdit={this.onEditFiber}
+              key={segment.id}
+            />
+          ))}
+        </LinesContainer>
+        <YearContainer>
           <Year>{worldStart}</Year>
-          <LinesContainer>
-            {visiblePersons.map(segment => (
-              <Fiber
-                data={segment}
-                worldStart={worldStart}
-                worldEnd={worldEnd}
-                onEdit={this.onEditFiber}
-                key={segment.id}
-              />
-            ))}
-          </LinesContainer>
           <Year>{worldEnd}</Year>
-        </Content>
+        </YearContainer>
         {editSegment && (
           <SegmentEditForm
             segment={editSegment}
@@ -121,6 +136,8 @@ class App extends Component {
         <PersonList
           persons={sortedPersons}
           onPersonToggle={this.onPersonToggle}
+          onSelectAll={this.onSelectAll}
+          onClearAll={this.onClearAll}
         />
       </Root>
     );

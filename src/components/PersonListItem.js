@@ -15,12 +15,14 @@ export default class PersonListItem extends React.Component {
 
     return (
       <div>
-        <input
-          type="checkbox"
-          checked={person.visible}
-          onChange={() => this.props.onToggle(person.id)}
-        />
-        {person.title}
+        <label>
+          <input
+            type="checkbox"
+            checked={person.visible}
+            onChange={() => this.props.onToggle(person.id)}
+          />
+          {person.title} ({person.start}-{person.end})
+        </label>
       </div>
     )
   }

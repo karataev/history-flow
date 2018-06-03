@@ -13,8 +13,9 @@ background: tomato;
 
 const Title = styled.div`
 position: absolute;
-bottom: 0;
+bottom: 2px;
 font-size: 12px;
+white-space: nowrap;
 `;
 
 const Point = styled.div`
