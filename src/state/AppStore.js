@@ -19,7 +19,19 @@ export default class AppStore {
     this.worldStart = data.worldStart;
     this.worldEnd = data.worldEnd;
     this.segments = data.segments;
-    this.groups = data.groups;
+    let groups = data.groups;
+    groups.push({
+      id: getNextId(groups),
+      title: 'Весь список',
+      ids: this.segments.map(segment => segment.id),
+    });
+    this.groups = groups.map(group => {
+      return {
+        id: group.id,
+        title: group.title,
+        entities: group.ids.map(id => _.find(this.segments, {id})),
+      }
+    })
   }
 
   startAddEntity = () => {
@@ -48,12 +60,32 @@ export default class AppStore {
     this.cancelAddEntity();
   }
 
+  toggleEntity = entity => {
+    entity.visible = !entity.visible;
+  };
+
+  selectGroup = group => {
+    group.entities.forEach(entity => entity.visible = true);
+  };
+
+  clearGroup = group => {
+    group.entities.forEach(entity => entity.visible = false);
+  };
+
   save = () => {
+    let copyGroups = JSON.parse(JSON.stringify(this.groups));
+    copyGroups = copyGroups.slice(0, -1);
     let state = {
       worldStart: this.worldStart,
       worldEnd: this.worldEnd,
       segments: this.segments,
-      groups: this.groups,
+      groups: copyGroups.map(group => {
+        return {
+          id: group.id,
+          title: group.title,
+          ids: group.entities.map(entity => entity.id),
+        }
+      }),
     };
     let json = JSON.stringify(state, null, 2);
     console.log(json);
@@ -61,7 +93,8 @@ export default class AppStore {
   };
 
   get graphEntities() {
-    return _.sortBy(this.segments, 'start');
+    let sorted = _.sortBy(this.segments, 'start');
+    return sorted.filter(entity => entity.visible);
   }
 }
 

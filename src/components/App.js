@@ -9,6 +9,8 @@ import Groups from "./Groups";
 import AppStore from '../state/AppStore';
 import Years from './Years';
 import Graph from './Graph';
+import PersonGroupItem from "./EntityGroupItem";
+import EntityGroup from "./EntityGroup";
 
 const Root = styled.div`
 `;
@@ -70,20 +72,11 @@ class App extends Component {
     return (
       <Root>
         <Footer appStore={appStore} />
-
         {appStore.isAddingEntity && <EntityEditForm appStore={appStore} />}
         {appStore.editEntity && <EntityEditForm appStore={appStore} />}
         <Years appStore={appStore} />
         <Graph appStore={appStore} />
-{/*
-        <Groups
-          groups={groups}
-          allPersons={segments}
-          onPersonToggle={this.onPersonToggle}
-          onSelectGroup={this.onSelectGroup}
-          onClearGroup={this.onClearGroup}
-        />
-*/}
+        <Groups appStore={appStore}/>
       </Root>
     );
   }

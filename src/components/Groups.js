@@ -2,42 +2,29 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import PersonGroup from "./PersonGroup";
+import EntityGroup from "./EntityGroup";
 import _ from "lodash";
 
 const Root = styled.div`
 display: flex;
 `;
 
-function getGroupPersons(allPersons, personIds) {
-  return personIds.map(id => {
-    return _.find(allPersons, {id});
-  })
-}
-
 export default class Groups extends React.Component {
 
   static propTypes = {
-    groups: PropTypes.array.isRequired,
-    allPersons: PropTypes.array.isRequired,
-    onPersonToggle: PropTypes.func.isRequired,
-    onSelectGroup: PropTypes.func.isRequired,
-    onClearGroup: PropTypes.func.isRequired,
+    appStore: PropTypes.object.isRequired,
   };
 
   render() {
-    const {groups, allPersons} = this.props;
+    const {appStore} = this.props;
 
     return (
       <Root>
-        {groups.map(group => (
-          <PersonGroup
-            title={group.title}
-            persons={getGroupPersons(allPersons, group.ids)}
-            onPersonToggle={this.props.onPersonToggle}
-            onSelectAll={() => this.props.onSelectGroup(group.id)}
-            onClearAll={() => this.props.onClearGroup(group.id)}
-            key={group.title}
+        {appStore.groups.map(group => (
+          <EntityGroup
+            appStore={appStore}
+            group={group}
+            key={group.id}
           />
         ))}
       </Root>
