@@ -1,28 +1,22 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import {observer} from 'mobx-react';
 
 const Root = styled.div`
 padding: 10px;
 `;
 
-
-export default class SegmentEditForm extends React.Component {
-
-  static propTypes = {
-    segment: PropTypes.object,
-    onSuccess: PropTypes.func.isRequired,
-    onCancel: PropTypes.func.isRequired,
-  };
+class EntityEditForm extends React.Component {
 
   constructor(props) {
     super(props);
 
-    const {segment} = props;
+    const {editEntity} = this.props.appStore;
     this.state = {
-      title: segment ? segment.title : '',
-      start: segment ? segment.start : 0,
-      end: segment ? segment.end : 0,
+      title: editEntity ? editEntity.title : 'foo',
+      start: editEntity ? editEntity.start : 0,
+      end: editEntity ? editEntity.end : 0,
+      id: editEntity ? editEntity.id : null,
     }
   }
 
@@ -52,19 +46,21 @@ export default class SegmentEditForm extends React.Component {
     e.preventDefault();
 
     let result = {
+      id: this.state.id,
       title: this.state.title,
       start: Number(this.state.start),
       end: Number(this.state.end),
       visible: true,
     };
-    if (this.props.segment) {
-      result.id = this.props.segment.id;
-    }
-    this.props.onSuccess(result);
+    this.props.appStore.addEntity(result);
+  };
+
+  onCancel = e => {
+    this.props.appStore.cancelAddEntity();
   };
 
   render() {
-    const {segment} = this.props;
+    const {editEntity} = this.props.appStore;
 
     return (
       <Root>
@@ -92,11 +88,11 @@ export default class SegmentEditForm extends React.Component {
           </div>
           <div>
             <button type="submit">
-              {segment ? 'Сохранить' : 'Добавить'}
+              {editEntity ? 'Сохранить' : 'Добавить'}
             </button>
             <button
               type="button"
-              onClick={this.props.onCancel}
+              onClick={this.onCancel}
             >Отмена</button>
           </div>
         </form>
@@ -104,3 +100,5 @@ export default class SegmentEditForm extends React.Component {
     )
   }
 }
+
+export default observer(EntityEditForm);
