@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import EntityGroupItem from "./EntityGroupItem";
 import styled from 'styled-components';
+import GroupEditForm from "./GroupEditForm";
+import {observer} from 'mobx-react';
 
 const Root = styled.div`
 margin-top: 10px;
@@ -13,7 +15,7 @@ const ButtonsContainer = styled.div`
 margin-bottom: 10px;
 `;
 
-export default class EntityGroup extends React.Component {
+class EntityGroup extends React.Component {
 
   static propTypes = {
     appStore: PropTypes.object.isRequired,
@@ -43,7 +45,13 @@ export default class EntityGroup extends React.Component {
             />
           ))}
         </div>
+        <GroupEditForm
+          appStore={appStore}
+          group={group}
+        />
       </Root>
     )
   }
 }
+
+export default observer(EntityGroup);

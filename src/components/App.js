@@ -5,12 +5,12 @@ import {observer} from 'mobx-react';
 
 import Footer from "./Footer";
 import EntityEditForm from "./EntityEditForm";
-import Groups from "./Groups";
+import Groups from "../groups/Groups";
 import AppStore from '../state/AppStore';
 import Years from './Years';
 import Graph from './Graph';
-import PersonGroupItem from "./EntityGroupItem";
-import EntityGroup from "./EntityGroup";
+import PersonGroupItem from "../groups/EntityGroupItem";
+import EntityGroup from "../groups/EntityGroup";
 
 const Root = styled.div`
 `;

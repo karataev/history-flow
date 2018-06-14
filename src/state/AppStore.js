@@ -1,6 +1,7 @@
 import {decorate, observable, computed} from 'mobx';
 import _ from 'lodash';
 import copy from 'copy-to-clipboard';
+import GroupItem from "./GroupItem";
 
 function getNextId(collection) {
   const ids = collection.map(item => item.id);
@@ -13,13 +14,15 @@ export default class AppStore {
   segments = [];
   isAddingEntity = false;
   editEntity = null;
-  groupsData = [];
+  groups = [];
 
   constructor(data) {
     this.worldStart = data.worldStart;
     this.worldEnd = data.worldEnd;
     this.segments = data.segments;
-    this.groupsData = data.groups;
+    this.groups = data.groups.map(group => {
+      return new GroupItem(group, this.segments);
+    });
   }
 
   startAddEntity = () => {
@@ -60,18 +63,21 @@ export default class AppStore {
     group.entities.forEach(entity => entity.visible = false);
   };
 
+  addEntityToGroup = (groupId, entityId) => {
+    let groupItem = _.find(this.groups, {id: groupId});
+    groupItem.addEntityId(entityId);
+  };
+
   save = () => {
-    let copyGroups = JSON.parse(JSON.stringify(this.groups));
-    copyGroups = copyGroups.slice(0, -1);
     let state = {
       worldStart: this.worldStart,
       worldEnd: this.worldEnd,
       segments: this.segments,
-      groups: copyGroups.map(group => {
+      groups: this.groups.map(group => {
         return {
           id: group.id,
           title: group.title,
-          ids: group.entities.map(entity => entity.id),
+          ids: group.ids,
         }
       }),
     };
@@ -85,22 +91,9 @@ export default class AppStore {
     return sorted.filter(entity => entity.visible);
   }
 
-  get groups() {
-    return this.groupsData.map(group => {
-      return {
-        id: group.id,
-        title: group.title,
-        entities: group.ids.map(id => _.find(this.segments, {id})),
-      }
-    })
-  }
-
   get groupAllEntities() {
-    return {
-      id: -1,
-      title: 'Весь список',
-      entities: this.segments,
-    }
+    let allIds = this.segments.map(entity => entity.id);
+    return new GroupItem({id: -1, title: 'Весь список', ids: allIds}, this.segments);
   }
 }
 
@@ -110,7 +103,7 @@ decorate(AppStore, {
   segments: observable,
   isAddingEntity: observable,
   editEntity: observable,
+  groups: observable,
   graphEntities: computed,
-  groups: computed,
   groupAllEntities: computed,
 });
