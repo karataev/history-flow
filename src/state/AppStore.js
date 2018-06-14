@@ -9,16 +9,12 @@ function getNextId(collection) {
 }
 
 export default class AppStore {
-  worldStart = 1000;
-  worldEnd = 2000;
   segments = [];
   isAddingEntity = false;
   editEntity = null;
   groups = [];
 
   constructor(data) {
-    this.worldStart = data.worldStart;
-    this.worldEnd = data.worldEnd;
     this.segments = data.segments;
     this.groups = data.groups.map(group => {
       return new GroupItem(group, this.segments);
@@ -95,15 +91,37 @@ export default class AppStore {
     let allIds = this.segments.map(entity => entity.id);
     return new GroupItem({id: -1, title: 'Весь список', ids: allIds}, this.segments);
   }
+
+  get worldStart() {
+    let result = Number.MAX_VALUE;
+    this.segments.forEach(entity => {
+      if (!entity.visible) return;
+      if (entity.start < result) result = entity.start;
+    });
+    if (result === Number.MAX_VALUE) result = 0;
+    return result;
+  }
+
+  get worldEnd() {
+    let result = Number.MIN_VALUE;
+    this.segments.forEach(entity => {
+      if (!entity.visible) return;
+      if (entity.end > result) result = entity.end;
+    });
+    if (result === Number.MIN_VALUE) result = 0;
+    return result;
+  }
+
 }
 
 decorate(AppStore, {
-  worldStart: observable,
-  worldEnd: observable,
   segments: observable,
   isAddingEntity: observable,
   editEntity: observable,
   groups: observable,
+
+  worldStart: computed,
+  worldEnd: computed,
   graphEntities: computed,
   groupAllEntities: computed,
 });
