@@ -11,27 +11,15 @@ export default class AppStore {
   worldStart = 1000;
   worldEnd = 2000;
   segments = [];
-  groups = [];
   isAddingEntity = false;
   editEntity = null;
+  groupsData = [];
 
   constructor(data) {
     this.worldStart = data.worldStart;
     this.worldEnd = data.worldEnd;
     this.segments = data.segments;
-    let groups = data.groups;
-    groups.push({
-      id: getNextId(groups),
-      title: 'Весь список',
-      ids: this.segments.map(segment => segment.id),
-    });
-    this.groups = groups.map(group => {
-      return {
-        id: group.id,
-        title: group.title,
-        entities: group.ids.map(id => _.find(this.segments, {id})),
-      }
-    })
+    this.groupsData = data.groups;
   }
 
   startAddEntity = () => {
@@ -96,14 +84,33 @@ export default class AppStore {
     let sorted = _.sortBy(this.segments, 'start');
     return sorted.filter(entity => entity.visible);
   }
+
+  get groups() {
+    return this.groupsData.map(group => {
+      return {
+        id: group.id,
+        title: group.title,
+        entities: group.ids.map(id => _.find(this.segments, {id})),
+      }
+    })
+  }
+
+  get groupAllEntities() {
+    return {
+      id: -1,
+      title: 'Весь список',
+      entities: this.segments,
+    }
+  }
 }
 
 decorate(AppStore, {
   worldStart: observable,
   worldEnd: observable,
   segments: observable,
-  groups: observable,
   isAddingEntity: observable,
   editEntity: observable,
   graphEntities: computed,
+  groups: computed,
+  groupAllEntities: computed,
 });

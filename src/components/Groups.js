@@ -27,6 +27,10 @@ export default class Groups extends React.Component {
             key={group.id}
           />
         ))}
+        <EntityGroup
+          appStore={appStore}
+          group={appStore.groupAllEntities}
+        />
       </Root>
     )
   }
