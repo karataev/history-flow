@@ -7,7 +7,7 @@
       "title": "Григорий Потёмкин",
       "start": 1739,
       "end": 1791,
-      "visible": true
+      "visible": false
     },
     {
       "id": 2,
@@ -21,7 +21,7 @@
       "title": "Григорий Орлов",
       "start": 1734,
       "end": 1783,
-      "visible": true
+      "visible": false
     },
     {
       "id": 4,
@@ -252,6 +252,153 @@
       "title": "Станислав Понятовский",
       "start": 1732,
       "end": 1798,
+      "visible": false
+    },
+    {
+      "id": 37,
+      "title": "Александр Васильчиков",
+      "start": 1746,
+      "end": 1813,
+      "visible": false
+    },
+    {
+      "id": 38,
+      "title": "Петр Завадовский",
+      "start": 1739,
+      "end": 1812,
+      "visible": false
+    },
+    {
+      "id": 39,
+      "title": "Платон Зубов",
+      "start": 1767,
+      "end": 1822,
+      "visible": false
+    },
+    {
+      "id": 40,
+      "title": "Василий Жуковский",
+      "start": 1783,
+      "end": 1852,
+      "visible": true
+    },
+    {
+      "id": 41,
+      "title": "Александр Грибоедов",
+      "start": 1795,
+      "end": 1829,
+      "visible": true
+    },
+    {
+      "id": 42,
+      "title": "Александр Пушкин",
+      "start": 1799,
+      "end": 1837,
+      "visible": true
+    },
+    {
+      "id": 43,
+      "title": "Евгений Баратынский",
+      "start": 1800,
+      "end": 1844,
+      "visible": true
+    },
+    {
+      "id": 44,
+      "title": "Федор Тютчев",
+      "start": 1803,
+      "end": 1873,
+      "visible": true
+    },
+    {
+      "id": 45,
+      "title": "Николай Гоголь",
+      "start": 1809,
+      "end": 1852,
+      "visible": true
+    },
+    {
+      "id": 46,
+      "title": "Иван Гончаров",
+      "start": 1812,
+      "end": 1891,
+      "visible": true
+    },
+    {
+      "id": 47,
+      "title": "Михаил Лермонтов",
+      "start": 1814,
+      "end": 1841,
+      "visible": true
+    },
+    {
+      "id": 48,
+      "title": "Алексей Толстой",
+      "start": 1817,
+      "end": 1875,
+      "visible": true
+    },
+    {
+      "id": 49,
+      "title": "Иван Тургенев",
+      "start": 1818,
+      "end": 1883,
+      "visible": true
+    },
+    {
+      "id": 50,
+      "title": "Афанасий Фет",
+      "start": 1820,
+      "end": 1892,
+      "visible": true
+    },
+    {
+      "id": 51,
+      "title": "Николай Некрасов",
+      "start": 1821,
+      "end": 1878,
+      "visible": true
+    },
+    {
+      "id": 52,
+      "title": "Федор Достоевский",
+      "start": 1821,
+      "end": 1881,
+      "visible": true
+    },
+    {
+      "id": 53,
+      "title": "Александр Островский",
+      "start": 1823,
+      "end": 1886,
+      "visible": true
+    },
+    {
+      "id": 54,
+      "title": "Михаил Салтыков-Щедрин",
+      "start": 1826,
+      "end": 1889,
+      "visible": true
+    },
+    {
+      "id": 55,
+      "title": "Николай Чернышевский",
+      "start": 1828,
+      "end": 1889,
+      "visible": true
+    },
+    {
+      "id": 56,
+      "title": "Лев Толстой",
+      "start": 1828,
+      "end": 1910,
+      "visible": true
+    },
+    {
+      "id": 57,
+      "title": "Антон Чехов",
+      "start": 1860,
+      "end": 1904,
       "visible": true
     }
   ],
@@ -299,7 +446,34 @@
       "ids": [
         1,
         3,
-        36
+        36,
+        37,
+        39,
+        38
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Золотой век русской литературы",
+      "ids": [
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57
       ]
     }
   ]
