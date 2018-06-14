@@ -6,7 +6,7 @@ const Root = styled.div`
 margin-top: 10px;
 `;
 
-const Footer = observer(({appStore}) => {
+const Toolbar = observer(({appStore}) => {
   return (
     <Root>
       <button
@@ -19,4 +19,4 @@ const Footer = observer(({appStore}) => {
   )
 });
 
-export default Footer;
+export default Toolbar;

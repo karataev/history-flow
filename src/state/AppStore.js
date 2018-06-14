@@ -9,15 +9,15 @@ function getNextId(collection) {
 }
 
 export default class AppStore {
-  segments = [];
+  entities = [];
   isAddingEntity = false;
   editEntity = null;
   groups = [];
 
   constructor(data) {
-    this.segments = data.segments;
+    this.entities = data.entities;
     this.groups = data.groups.map(group => {
-      return new GroupItem(group, this.segments);
+      return new GroupItem(group, this.entities);
     });
   }
 
@@ -36,13 +36,13 @@ export default class AppStore {
 
   addEntity(entity) {
     if (entity.id) {
-      let thisEntity = _.find(this.segments, {id: entity.id});
+      let thisEntity = _.find(this.entities, {id: entity.id});
       thisEntity.title = entity.title;
       thisEntity.start = entity.start;
       thisEntity.end = entity.end;
     } else {
-      entity.id = getNextId(this.segments);
-      this.segments.push(entity);
+      entity.id = getNextId(this.entities);
+      this.entities.push(entity);
     }
     this.cancelAddEntity();
   }
@@ -68,7 +68,7 @@ export default class AppStore {
     let state = {
       worldStart: this.worldStart,
       worldEnd: this.worldEnd,
-      segments: this.segments,
+      entities: this.entities,
       groups: this.groups.map(group => {
         return {
           id: group.id,
@@ -83,18 +83,18 @@ export default class AppStore {
   };
 
   get graphEntities() {
-    let sorted = _.sortBy(this.segments, 'start');
+    let sorted = _.sortBy(this.entities, 'start');
     return sorted.filter(entity => entity.visible);
   }
 
   get groupAllEntities() {
-    let allIds = this.segments.map(entity => entity.id);
-    return new GroupItem({id: -1, title: 'Весь список', ids: allIds}, this.segments);
+    let allIds = this.entities.map(entity => entity.id);
+    return new GroupItem({id: -1, title: 'Весь список', ids: allIds}, this.entities);
   }
 
   get worldStart() {
     let result = Number.MAX_VALUE;
-    this.segments.forEach(entity => {
+    this.entities.forEach(entity => {
       if (!entity.visible) return;
       if (entity.start < result) result = entity.start;
     });
@@ -104,7 +104,7 @@ export default class AppStore {
 
   get worldEnd() {
     let result = Number.MIN_VALUE;
-    this.segments.forEach(entity => {
+    this.entities.forEach(entity => {
       if (!entity.visible) return;
       if (entity.end > result) result = entity.end;
     });
@@ -115,7 +115,7 @@ export default class AppStore {
 }
 
 decorate(AppStore, {
-  segments: observable,
+  entities: observable,
   isAddingEntity: observable,
   editEntity: observable,
   groups: observable,

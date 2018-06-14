@@ -15,11 +15,11 @@ class Graph extends React.Component {
     const {appStore} = this.props;
     return (
       <Root>
-        {appStore.graphEntities.map(segment => (
+        {appStore.graphEntities.map(entity => (
           <EntityLine
             appStore={appStore}
-            segment={segment}
-            key={segment.id}
+            entity={entity}
+            key={entity.id}
           />
         ))}
       </Root>

@@ -29,7 +29,7 @@ background: tomato;
 border-radius: 50%;
 `;
 
-export default class Segment extends React.Component {
+export default class EntitySegment extends React.Component {
 
   static propTypes = {
     title: PropTypes.string.isRequired,
