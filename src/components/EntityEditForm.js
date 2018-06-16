@@ -13,7 +13,7 @@ class EntityEditForm extends React.Component {
 
     const {editEntity} = this.props.appStore;
     this.state = {
-      title: editEntity ? editEntity.title : 'foo',
+      title: editEntity ? editEntity.title : '',
       start: editEntity ? editEntity.start : 0,
       end: editEntity ? editEntity.end : 0,
       id: editEntity ? editEntity.id : null,

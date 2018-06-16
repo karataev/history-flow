@@ -11,7 +11,7 @@ const Toolbar = observer(({appStore}) => {
     <Root>
       <button
         onClick={appStore.startAddEntity}
-      >Добавить личность</button>
+      >Добавить</button>
       <button
         onClick={appStore.save}
       >Сохранить</button>

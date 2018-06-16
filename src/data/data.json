@@ -278,125 +278,202 @@
       "title": "Василий Жуковский",
       "start": 1783,
       "end": 1852,
-      "visible": true
+      "visible": false
     },
     {
       "id": 41,
       "title": "Александр Грибоедов",
       "start": 1795,
       "end": 1829,
-      "visible": true
+      "visible": false
     },
     {
       "id": 42,
       "title": "Александр Пушкин",
       "start": 1799,
       "end": 1837,
-      "visible": true
+      "visible": false
     },
     {
       "id": 43,
       "title": "Евгений Баратынский",
       "start": 1800,
       "end": 1844,
-      "visible": true
+      "visible": false
     },
     {
       "id": 44,
       "title": "Федор Тютчев",
       "start": 1803,
       "end": 1873,
-      "visible": true
+      "visible": false
     },
     {
       "id": 45,
       "title": "Николай Гоголь",
       "start": 1809,
       "end": 1852,
-      "visible": true
+      "visible": false
     },
     {
       "id": 46,
       "title": "Иван Гончаров",
       "start": 1812,
       "end": 1891,
-      "visible": true
+      "visible": false
     },
     {
       "id": 47,
       "title": "Михаил Лермонтов",
       "start": 1814,
       "end": 1841,
-      "visible": true
+      "visible": false
     },
     {
       "id": 48,
       "title": "Алексей Толстой",
       "start": 1817,
       "end": 1875,
-      "visible": true
+      "visible": false
     },
     {
       "id": 49,
       "title": "Иван Тургенев",
       "start": 1818,
       "end": 1883,
-      "visible": true
+      "visible": false
     },
     {
       "id": 50,
       "title": "Афанасий Фет",
       "start": 1820,
       "end": 1892,
-      "visible": true
+      "visible": false
     },
     {
       "id": 51,
       "title": "Николай Некрасов",
       "start": 1821,
       "end": 1878,
-      "visible": true
+      "visible": false
     },
     {
       "id": 52,
       "title": "Федор Достоевский",
       "start": 1821,
       "end": 1881,
-      "visible": true
+      "visible": false
     },
     {
       "id": 53,
       "title": "Александр Островский",
       "start": 1823,
       "end": 1886,
-      "visible": true
+      "visible": false
     },
     {
       "id": 54,
       "title": "Михаил Салтыков-Щедрин",
       "start": 1826,
       "end": 1889,
-      "visible": true
+      "visible": false
     },
     {
       "id": 55,
       "title": "Николай Чернышевский",
       "start": 1828,
       "end": 1889,
-      "visible": true
+      "visible": false
     },
     {
       "id": 56,
       "title": "Лев Толстой",
       "start": 1828,
       "end": 1910,
-      "visible": true
+      "visible": false
     },
     {
       "id": 57,
       "title": "Антон Чехов",
       "start": 1860,
       "end": 1904,
+      "visible": false
+    },
+    {
+      "id": 58,
+      "title": "Пруссия",
+      "start": 1525,
+      "end": 1947,
+      "visible": true
+    },
+    {
+      "id": 59,
+      "title": "Российская империя",
+      "start": 1721,
+      "end": 1917,
+      "visible": true
+    },
+    {
+      "id": 60,
+      "title": "СССР",
+      "start": 1922,
+      "end": 1991,
+      "visible": true
+    },
+    {
+      "id": 61,
+      "title": "Русское царство",
+      "start": 1547,
+      "end": 1721,
+      "visible": true
+    },
+    {
+      "id": 62,
+      "title": "Великое княжество Московское",
+      "start": 1263,
+      "end": 1547,
+      "visible": true
+    },
+    {
+      "id": 63,
+      "title": "Киевская Русь",
+      "start": 862,
+      "end": 1240,
+      "visible": true
+    },
+    {
+      "id": 64,
+      "title": "Ливонский орден",
+      "start": 1237,
+      "end": 1561,
+      "visible": true
+    },
+    {
+      "id": 65,
+      "title": "Османская империя",
+      "start": 1299,
+      "end": 1922,
+      "visible": true
+    },
+    {
+      "id": 66,
+      "title": "Римская империя",
+      "start": -27,
+      "end": 476,
+      "visible": true
+    },
+    {
+      "id": 67,
+      "title": "Римская республика",
+      "start": -509,
+      "end": -27,
+      "visible": true
+    },
+    {
+      "id": 68,
+      "title": "Речь Посполитая",
+      "start": 1569,
+      "end": 1795,
       "visible": true
     }
   ],
@@ -472,6 +549,23 @@
         55,
         56,
         57
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Государства",
+      "ids": [
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68
       ]
     }
   ]

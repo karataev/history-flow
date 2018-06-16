@@ -66,8 +66,6 @@ export default class AppStore {
 
   save = () => {
     let state = {
-      worldStart: this.worldStart,
-      worldEnd: this.worldEnd,
       entities: this.entities,
       groups: this.groups.map(group => {
         return {
