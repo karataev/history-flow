@@ -404,152 +404,201 @@
       "title": "Пруссия",
       "start": 1525,
       "end": 1947,
-      "visible": true
+      "visible": false
     },
     {
       "id": 59,
       "title": "Российская империя",
       "start": 1721,
       "end": 1917,
-      "visible": true
+      "visible": false
     },
     {
       "id": 60,
       "title": "СССР",
       "start": 1922,
       "end": 1991,
-      "visible": true
+      "visible": false
     },
     {
       "id": 61,
       "title": "Русское царство",
       "start": 1547,
       "end": 1721,
-      "visible": true
+      "visible": false
     },
     {
       "id": 62,
       "title": "Великое княжество Московское",
       "start": 1263,
       "end": 1547,
-      "visible": true
+      "visible": false
     },
     {
       "id": 63,
       "title": "Киевская Русь",
       "start": 862,
       "end": 1240,
-      "visible": true
+      "visible": false
     },
     {
       "id": 64,
       "title": "Ливонский орден",
       "start": 1237,
       "end": 1561,
-      "visible": true
+      "visible": false
     },
     {
       "id": 65,
       "title": "Османская империя",
       "start": 1299,
       "end": 1922,
-      "visible": true
+      "visible": false
     },
     {
       "id": 66,
       "title": "Римская империя",
       "start": -27,
       "end": 476,
-      "visible": true
+      "visible": false
     },
     {
       "id": 67,
       "title": "Римская республика",
       "start": -509,
       "end": -27,
-      "visible": true
+      "visible": false
     },
     {
       "id": 68,
       "title": "Речь Посполитая",
       "start": 1569,
       "end": 1795,
-      "visible": true
+      "visible": false
     },
     {
       "id": 69,
       "title": "Германия",
       "start": 919,
       "end": 2018,
-      "visible": true
+      "visible": false
     },
     {
       "id": 70,
       "title": "Англия",
       "start": 928,
       "end": 2018,
-      "visible": true
+      "visible": false
     },
     {
       "id": 71,
       "title": "Швеция",
       "start": 1397,
       "end": 2018,
-      "visible": true
+      "visible": false
     },
     {
       "id": 72,
       "title": "Россия",
       "start": 862,
       "end": 2018,
-      "visible": true
+      "visible": false
     },
     {
       "id": 73,
       "title": "США",
       "start": 1776,
       "end": 2018,
-      "visible": true
+      "visible": false
     },
     {
       "id": 74,
       "title": "Франция",
       "start": 486,
       "end": 2018,
-      "visible": true
+      "visible": false
     },
     {
       "id": 75,
       "title": "Испания",
       "start": 1479,
       "end": 2018,
-      "visible": true
+      "visible": false
     },
     {
       "id": 76,
       "title": "Священная Римская империя",
       "start": 962,
       "end": 1806,
-      "visible": true
+      "visible": false
     },
     {
       "id": 77,
       "title": "Норвегия",
       "start": 872,
       "end": 2018,
-      "visible": true
+      "visible": false
     },
     {
       "id": 78,
       "title": "Золотая Орда",
       "start": 1224,
       "end": 1483,
-      "visible": true
+      "visible": false
     },
     {
       "id": 79,
       "title": "Чехия",
       "start": 870,
+      "end": 2018,
+      "visible": false
+    },
+    {
+      "id": 80,
+      "title": "Христианство",
+      "start": 0,
+      "end": 2018,
+      "visible": true
+    },
+    {
+      "id": 81,
+      "title": "Православие",
+      "start": 1054,
+      "end": 2018,
+      "visible": true
+    },
+    {
+      "id": 82,
+      "title": "Католицизм",
+      "start": 1054,
+      "end": 2018,
+      "visible": true
+    },
+    {
+      "id": 83,
+      "title": "Протестантизм",
+      "start": 1517,
+      "end": 2018,
+      "visible": true
+    },
+    {
+      "id": 84,
+      "title": "Иудаизм",
+      "start": -700,
+      "end": 2018,
+      "visible": true
+    },
+    {
+      "id": 85,
+      "title": "Буддизм",
+      "start": -543,
+      "end": 2018,
+      "visible": true
+    },
+    {
+      "id": 86,
+      "title": "Ислам",
+      "start": 600,
       "end": 2018,
       "visible": true
     }
@@ -657,6 +706,20 @@
         77,
         78,
         79
+      ],
+      "isOpen": false
+    },
+    {
+      "id": 5,
+      "title": "Религии",
+      "ids": [
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        86
       ],
       "isOpen": true
     }
