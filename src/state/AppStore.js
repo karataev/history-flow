@@ -64,6 +64,10 @@ export default class AppStore {
     groupItem.addEntityId(entityId);
   };
 
+  toggleGroupOpen = group => {
+    group.isOpen = !group.isOpen;
+  };
+
   save = () => {
     let state = {
       entities: this.entities,
@@ -72,6 +76,7 @@ export default class AppStore {
           id: group.id,
           title: group.title,
           ids: group.ids,
+          isOpen: group.isOpen,
         }
       }),
     };
@@ -110,6 +115,10 @@ export default class AppStore {
     return result;
   }
 
+  get openedGroups() {
+    return this.groups.filter(group => group.isOpen);
+  }
+
 }
 
 decorate(AppStore, {
@@ -122,4 +131,5 @@ decorate(AppStore, {
   worldEnd: computed,
   graphEntities: computed,
   groupAllEntities: computed,
+  openedGroups: computed,
 });

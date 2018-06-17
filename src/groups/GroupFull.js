@@ -15,7 +15,12 @@ const ButtonsContainer = styled.div`
 margin-bottom: 10px;
 `;
 
-class EntityGroup extends React.Component {
+const ItemsContainer = styled.div`
+max-height: 500px;
+overflow: auto;
+`;
+
+class GroupFull extends React.Component {
 
   static propTypes = {
     appStore: PropTypes.object.isRequired,
@@ -36,7 +41,7 @@ class EntityGroup extends React.Component {
             onClick={() => appStore.clearGroup(group)}
           >Сбросить все</button>
         </ButtonsContainer>
-        <div>
+        <ItemsContainer>
           {group.entities.map(entity => (
             <EntityGroupItem
               appStore={appStore}
@@ -44,7 +49,7 @@ class EntityGroup extends React.Component {
               key={entity.id}
             />
           ))}
-        </div>
+        </ItemsContainer>
         <GroupEditForm
           appStore={appStore}
           group={group}
@@ -54,4 +59,4 @@ class EntityGroup extends React.Component {
   }
 }
 
-export default observer(EntityGroup);
+export default observer(GroupFull);

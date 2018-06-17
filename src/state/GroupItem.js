@@ -5,11 +5,12 @@ export default class GroupItem {
 
   ids = [];
 
-  constructor({id, title, ids}, allEntities) {
+  constructor({id, title, ids, isOpen}, allEntities) {
     this.id = id;
     this.title = title;
     this.ids = ids;
     this.allEntities = allEntities;
+    this.isOpen = isOpen || false;
   }
 
   addEntityId(entityId) {
@@ -24,5 +25,6 @@ export default class GroupItem {
 
 decorate(GroupItem, {
   ids: observable,
+  isOpen: observable,
   entities: computed,
 });

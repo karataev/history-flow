@@ -475,6 +475,83 @@
       "start": 1569,
       "end": 1795,
       "visible": true
+    },
+    {
+      "id": 69,
+      "title": "Германия",
+      "start": 919,
+      "end": 2018,
+      "visible": true
+    },
+    {
+      "id": 70,
+      "title": "Англия",
+      "start": 928,
+      "end": 2018,
+      "visible": true
+    },
+    {
+      "id": 71,
+      "title": "Швеция",
+      "start": 1397,
+      "end": 2018,
+      "visible": true
+    },
+    {
+      "id": 72,
+      "title": "Россия",
+      "start": 862,
+      "end": 2018,
+      "visible": true
+    },
+    {
+      "id": 73,
+      "title": "США",
+      "start": 1776,
+      "end": 2018,
+      "visible": true
+    },
+    {
+      "id": 74,
+      "title": "Франция",
+      "start": 486,
+      "end": 2018,
+      "visible": true
+    },
+    {
+      "id": 75,
+      "title": "Испания",
+      "start": 1479,
+      "end": 2018,
+      "visible": true
+    },
+    {
+      "id": 76,
+      "title": "Священная Римская империя",
+      "start": 962,
+      "end": 1806,
+      "visible": true
+    },
+    {
+      "id": 77,
+      "title": "Норвегия",
+      "start": 872,
+      "end": 2018,
+      "visible": true
+    },
+    {
+      "id": 78,
+      "title": "Золотая Орда",
+      "start": 1224,
+      "end": 1483,
+      "visible": true
+    },
+    {
+      "id": 79,
+      "title": "Чехия",
+      "start": 870,
+      "end": 2018,
+      "visible": true
     }
   ],
   "groups": [
@@ -513,7 +590,8 @@
         12,
         13,
         19
-      ]
+      ],
+      "isOpen": false
     },
     {
       "id": 2,
@@ -525,7 +603,8 @@
         37,
         39,
         38
-      ]
+      ],
+      "isOpen": false
     },
     {
       "id": 3,
@@ -549,7 +628,8 @@
         55,
         56,
         57
-      ]
+      ],
+      "isOpen": false
     },
     {
       "id": 4,
@@ -565,8 +645,20 @@
         65,
         66,
         67,
-        68
-      ]
+        68,
+        69,
+        70,
+        71,
+        72,
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79
+      ],
+      "isOpen": true
     }
   ]
 }

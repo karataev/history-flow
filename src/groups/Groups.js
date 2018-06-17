@@ -1,15 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import {observer} from 'mobx-react';
 
-import EntityGroup from "./EntityGroup";
-import _ from "lodash";
+import GroupFull from "./GroupFull";
+import GroupShort from "./GroupShort";
 
 const Root = styled.div`
 display: flex;
 `;
 
-export default class Groups extends React.Component {
+const GroupFullContainer = styled.div`
+display: flex;
+`;
+
+class Groups extends React.Component {
 
   static propTypes = {
     appStore: PropTypes.object.isRequired,
@@ -20,18 +25,32 @@ export default class Groups extends React.Component {
 
     return (
       <Root>
-        {appStore.groups.map(group => (
-          <EntityGroup
+        <div>
+          <h3>Все группы</h3>
+          {appStore.groups.map(group => (
+            <GroupShort
+              group={group}
+              appStore={appStore}
+              key={group.id}
+            />
+          ))}
+        </div>
+        <GroupFullContainer>
+          {appStore.openedGroups.map(group => (
+            <GroupFull
+              appStore={appStore}
+              group={group}
+              key={group.id}
+            />
+          ))}
+          <GroupFull
             appStore={appStore}
-            group={group}
-            key={group.id}
+            group={appStore.groupAllEntities}
           />
-        ))}
-        <EntityGroup
-          appStore={appStore}
-          group={appStore.groupAllEntities}
-        />
+        </GroupFullContainer>
       </Root>
     )
   }
 }
+
+export default observer(Groups);
