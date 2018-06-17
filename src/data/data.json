@@ -12,7 +12,7 @@
       "title": "Екатерина II",
       "start": 1729,
       "end": 1796,
-      "visible": false
+      "visible": true
     },
     {
       "id": 3,
@@ -26,84 +26,84 @@
       "title": "Петр III",
       "start": 1728,
       "end": 1762,
-      "visible": false
+      "visible": true
     },
     {
       "id": 5,
       "title": "Павел I",
       "start": 1754,
       "end": 1801,
-      "visible": false
+      "visible": true
     },
     {
       "id": 6,
       "title": "Петр I",
       "start": 1672,
       "end": 1725,
-      "visible": false
+      "visible": true
     },
     {
       "id": 7,
       "title": "Екатерина I",
       "start": 1684,
       "end": 1727,
-      "visible": false
+      "visible": true
     },
     {
       "id": 8,
       "title": "Анна Иоанновна",
       "start": 1693,
       "end": 1740,
-      "visible": false
+      "visible": true
     },
     {
       "id": 9,
       "title": "Елизавета Петровна",
       "start": 1709,
       "end": 1762,
-      "visible": false
+      "visible": true
     },
     {
       "id": 10,
       "title": "Александр I",
       "start": 1777,
       "end": 1825,
-      "visible": false
+      "visible": true
     },
     {
       "id": 11,
       "title": "Николай I",
       "start": 1796,
       "end": 1855,
-      "visible": false
+      "visible": true
     },
     {
       "id": 12,
       "title": "Александр II",
       "start": 1818,
       "end": 1881,
-      "visible": false
+      "visible": true
     },
     {
       "id": 13,
       "title": "Александр III",
       "start": 1845,
       "end": 1894,
-      "visible": false
+      "visible": true
     },
     {
       "id": 14,
       "title": "Михаил Федорович",
       "start": 1596,
       "end": 1645,
-      "visible": false
+      "visible": true
     },
     {
       "id": 15,
       "title": "Алексей Михайлович",
       "start": 1629,
       "end": 1676,
-      "visible": false
+      "visible": true
     },
     {
       "id": 16,
@@ -124,125 +124,125 @@
       "title": "Петр II",
       "start": 1715,
       "end": 1730,
-      "visible": false
+      "visible": true
     },
     {
       "title": "Николай II",
       "start": 1868,
       "end": 1918,
-      "visible": false,
+      "visible": true,
       "id": 19
     },
     {
       "title": "Иван VI",
       "start": 1740,
       "end": 1764,
-      "visible": false,
+      "visible": true,
       "id": 20
     },
     {
       "title": "Василий IV Шуйский",
       "start": 1552,
       "end": 1612,
-      "visible": false,
+      "visible": true,
       "id": 21
     },
     {
       "title": "Борис Годунов",
       "start": 1552,
       "end": 1605,
-      "visible": false,
+      "visible": true,
       "id": 22
     },
     {
       "title": "Ирина Годунова",
       "start": 1557,
       "end": 1603,
-      "visible": false,
+      "visible": true,
       "id": 23
     },
     {
       "title": "Федор I Иванович",
       "start": 1557,
       "end": 1598,
-      "visible": false,
+      "visible": true,
       "id": 24
     },
     {
       "title": "Иван IV Грозный",
       "start": 1530,
       "end": 1584,
-      "visible": false,
+      "visible": true,
       "id": 25
     },
     {
       "title": "Иван III",
       "start": 1479,
       "end": 1533,
-      "visible": false,
+      "visible": true,
       "id": 26
     },
     {
       "title": "Дмитрий Донской",
       "start": 1350,
       "end": 1389,
-      "visible": false,
+      "visible": true,
       "id": 27
     },
     {
       "title": "Иван I Калита",
       "start": 1283,
       "end": 1340,
-      "visible": false,
+      "visible": true,
       "id": 28
     },
     {
       "title": "Даниил Александрович",
       "start": 1261,
       "end": 1303,
-      "visible": false,
+      "visible": true,
       "id": 29
     },
     {
       "title": "Александр Невский",
       "start": 1221,
       "end": 1263,
-      "visible": false,
+      "visible": true,
       "id": 30
     },
     {
       "title": "Всеволод Большое Гнездо",
       "start": 1154,
       "end": 1212,
-      "visible": false,
+      "visible": true,
       "id": 31
     },
     {
       "title": "Юрий Долгорукий",
       "start": 1095,
       "end": 1157,
-      "visible": false,
+      "visible": true,
       "id": 32
     },
     {
       "title": "Владимир Мономах",
       "start": 1053,
       "end": 1125,
-      "visible": false,
+      "visible": true,
       "id": 33
     },
     {
       "title": "Владимир Святославович",
       "start": 960,
       "end": 1015,
-      "visible": false,
+      "visible": true,
       "id": 34
     },
     {
       "title": "Рюрик",
       "start": 820,
       "end": 879,
-      "visible": false,
+      "visible": true,
       "id": 35
     },
     {
@@ -558,47 +558,117 @@
       "title": "Христианство",
       "start": 0,
       "end": 2018,
-      "visible": true
+      "visible": false
     },
     {
       "id": 81,
       "title": "Православие",
       "start": 1054,
       "end": 2018,
-      "visible": true
+      "visible": false
     },
     {
       "id": 82,
       "title": "Католицизм",
       "start": 1054,
       "end": 2018,
-      "visible": true
+      "visible": false
     },
     {
       "id": 83,
       "title": "Протестантизм",
       "start": 1517,
       "end": 2018,
-      "visible": true
+      "visible": false
     },
     {
       "id": 84,
       "title": "Иудаизм",
       "start": -700,
       "end": 2018,
-      "visible": true
+      "visible": false
     },
     {
       "id": 85,
       "title": "Буддизм",
       "start": -543,
       "end": 2018,
-      "visible": true
+      "visible": false
     },
     {
       "id": 86,
       "title": "Ислам",
       "start": 600,
+      "end": 2018,
+      "visible": false
+    },
+    {
+      "id": 87,
+      "title": "Владимир Ленин",
+      "start": 1870,
+      "end": 1924,
+      "visible": true
+    },
+    {
+      "id": 88,
+      "title": "Иосиф Сталин",
+      "start": 1878,
+      "end": 1953,
+      "visible": true
+    },
+    {
+      "id": 89,
+      "title": "Никита Хрущев",
+      "start": 1894,
+      "end": 1971,
+      "visible": true
+    },
+    {
+      "id": 90,
+      "title": "Леонид Брежнев",
+      "start": 1906,
+      "end": 1982,
+      "visible": true
+    },
+    {
+      "id": 91,
+      "title": "Юрий Андропов",
+      "start": 1914,
+      "end": 1984,
+      "visible": true
+    },
+    {
+      "id": 92,
+      "title": "Константин Черненко",
+      "start": 1911,
+      "end": 1985,
+      "visible": true
+    },
+    {
+      "id": 93,
+      "title": "Михаил Горбачев",
+      "start": 1931,
+      "end": 2018,
+      "visible": true
+    },
+    {
+      "id": 94,
+      "title": "Борис Ельцин",
+      "start": 1931,
+      "end": 2007,
+      "visible": true
+    },
+    {
+      "id": 95,
+      "title": "Владимир Путин",
+      "start": 1952,
+      "end": 2018,
+      "visible": true
+    },
+    {
+      "id": 96,
+      "title": "Дмитрий Медведев",
+      "start": 1965,
       "end": 2018,
       "visible": true
     }
@@ -638,9 +708,19 @@
         11,
         12,
         13,
-        19
+        19,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96
       ],
-      "isOpen": false
+      "isOpen": true
     },
     {
       "id": 2,
@@ -721,7 +801,7 @@
         85,
         86
       ],
-      "isOpen": true
+      "isOpen": false
     }
   ]
 }
