@@ -1,7 +1,9 @@
 import {decorate, observable, computed} from 'mobx';
 import _ from 'lodash';
-import copy from 'copy-to-clipboard';
+
 import GroupItem from "./GroupItem";
+import storage from './storage';
+
 
 function getNextId(collection) {
   const ids = collection.map(item => item.id);
@@ -15,8 +17,17 @@ export default class AppStore {
   groups = [];
 
   constructor(data) {
-    this.entities = data.entities;
-    this.groups = data.groups.map(group => {
+    let storageState = storage.load();
+    let groupsData;
+    if (storageState) {
+      this.entities = storageState.entities;
+      groupsData = storageState.groups;
+    } else {
+      this.entities = data.entities;
+      groupsData = data.groups;
+    }
+
+    this.groups = groupsData.map(group => {
       return new GroupItem(group, this.entities);
     });
   }
@@ -49,41 +60,33 @@ export default class AppStore {
 
   toggleEntity = entity => {
     entity.visible = !entity.visible;
+    storage.save(this.entities, this.groups);
   };
 
   selectGroup = group => {
     group.entities.forEach(entity => entity.visible = true);
+    storage.save(this.entities, this.groups);
   };
 
   clearGroup = group => {
     group.entities.forEach(entity => entity.visible = false);
+    storage.save(this.entities, this.groups);
   };
 
   addEntityToGroup = (groupId, entityId) => {
     let groupItem = _.find(this.groups, {id: groupId});
     groupItem.addEntityId(entityId);
+    storage.save(this.entities, this.groups);
   };
 
   toggleGroupOpen = group => {
     group.isOpen = !group.isOpen;
     if (group.isOpen) this.selectGroup(group);
+    storage.save(this.entities, this.groups);
   };
 
   save = () => {
-    let state = {
-      entities: this.entities,
-      groups: this.groups.map(group => {
-        return {
-          id: group.id,
-          title: group.title,
-          ids: group.ids,
-          isOpen: group.isOpen,
-        }
-      }),
-    };
-    let json = JSON.stringify(state, null, 2);
-    console.log(json);
-    copy(json);
+    storage.copyToClipboard(this.entities, this.groups);
   };
 
   get graphEntities() {
