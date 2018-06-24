@@ -19,6 +19,12 @@ export default class GroupEditForm extends React.Component {
   onSubmit = e => {
     e.preventDefault();
 
+    let entityId = Number(this.state.value);
+    let entity = this.props.appStore.getEntityById(entityId);
+    if (!entity) {
+      console.log(`Объект с ID ${entityId} не найден`);
+      return;
+    }
     this.props.appStore.addEntityToGroup(this.props.group.id, Number(this.state.value));
     this.setState({value: ''});
   };

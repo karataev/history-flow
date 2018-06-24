@@ -63,6 +63,10 @@ export default class AppStore {
     storage.save(this.entities, this.groups);
   };
 
+  getEntityById(id) {
+    return _.find(this.entities, {id});
+  }
+
   selectGroup = group => {
     group.entities.forEach(entity => entity.visible = true);
     storage.save(this.entities, this.groups);
