@@ -13,7 +13,6 @@ function getNextId(collection) {
 
 export default class AppStore {
   entities = [];
-  isAddingEntity = false;
   editEntity = null;
   groups = [];
 
@@ -33,17 +32,12 @@ export default class AppStore {
     });
   }
 
-  startAddEntity = () => {
-    this.isAddingEntity = true;
-  };
-
-  cancelAddEntity = () => {
-    this.isAddingEntity = false;
-    this.editEntity = null;
-  };
-
   startEditEntity = entity => {
     this.editEntity = entity;
+  };
+
+  cancelEditEntity = () => {
+    this.editEntity = null;
   };
 
   addEntity(entity) {
@@ -56,7 +50,6 @@ export default class AppStore {
       entity.id = getNextId(this.entities);
       this.entities.push(entity);
     }
-    this.cancelAddEntity();
   }
 
   toggleEntity = entity => {
@@ -142,7 +135,6 @@ export default class AppStore {
 
 decorate(AppStore, {
   entities: observable,
-  isAddingEntity: observable,
   editEntity: observable,
   groups: observable,
 

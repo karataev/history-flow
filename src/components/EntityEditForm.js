@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import {observer} from 'mobx-react';
 
@@ -8,14 +9,20 @@ padding: 10px;
 
 class EntityEditForm extends React.Component {
 
+  static propTypes = {
+    appStore: PropTypes.object.isRequired,
+    onCancel: PropTypes.func.isRequired,
+    onSuccess: PropTypes.func.isRequired,
+  };
+
   constructor(props) {
     super(props);
 
     const {editEntity} = this.props.appStore;
     this.state = {
       title: editEntity ? editEntity.title : '',
-      start: editEntity ? editEntity.start : 0,
-      end: editEntity ? editEntity.end : 0,
+      start: editEntity ? editEntity.start : '',
+      end: editEntity ? editEntity.end : '',
       id: editEntity ? editEntity.id : null,
     }
   }
@@ -52,16 +59,16 @@ class EntityEditForm extends React.Component {
       end: Number(this.state.end),
       visible: true,
     };
-    this.props.appStore.addEntity(result);
-  };
-
-  onCancel = e => {
-    this.props.appStore.cancelAddEntity();
+    this.props.onSuccess(result);
+    this.setState({
+      title: '',
+      start: '',
+      end: '',
+      id: null,
+    })
   };
 
   render() {
-    const {editEntity} = this.props.appStore;
-
     return (
       <Root>
         <form onSubmit={this.onSubmit}>
@@ -70,29 +77,32 @@ class EntityEditForm extends React.Component {
               ref={el => this.nameEl = el}
               type="text"
               placeholder="Имя"
+              required
               value={this.state.title}
               onChange={this.onTitleChange}
             />
             <input
-              type="number"
-              placeholder="Год рождения"
+              type="text"
+              placeholder="Начало"
+              required
               value={this.state.start}
               onChange={this.onStartChange}
             />
             <input
-              type="number"
-              placeholder="Год смерти"
+              type="text"
+              placeholder="Конец"
+              required
               value={this.state.end}
               onChange={this.onEndChange}
             />
           </div>
           <div>
             <button type="submit">
-              {editEntity ? 'Сохранить' : 'Добавить'}
+              Ок
             </button>
             <button
               type="button"
-              onClick={this.onCancel}
+              onClick={this.props.onCancel}
             >Отмена</button>
           </div>
         </form>

@@ -5,6 +5,8 @@ import styled from 'styled-components';
 import GroupEditForm from "./GroupEditForm";
 import {observer} from 'mobx-react';
 
+import EntityEditForm from '../components/EntityEditForm';
+
 const Root = styled.div`
 margin-top: 10px;
 border: 1px solid #999;
@@ -38,6 +40,12 @@ class GroupFull extends React.Component {
     this.props.appStore.toggleGroupOpen(this.props.group);
   };
 
+  onAddEntity = entity => {
+    const {appStore, group} = this.props;
+    appStore.addEntity(entity);
+    appStore.addEntityToGroup(group.id, entity.id);
+  };
+
   render() {
     const {group, appStore} = this.props;
 
@@ -65,6 +73,11 @@ class GroupFull extends React.Component {
         <GroupEditForm
           appStore={appStore}
           group={group}
+        />
+        <EntityEditForm
+          appStore={appStore}
+          onCancel={() => console.log('cancel')}
+          onSuccess={this.onAddEntity}
         />
       </Root>
     )
