@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import notification from '../state/notification';
+
 export default class GroupEditForm extends React.Component {
 
   static propTypes = {
@@ -27,7 +29,7 @@ export default class GroupEditForm extends React.Component {
     let entityId = Number(this.state.addValue);
     let entity = this.props.appStore.getEntityById(entityId);
     if (!entity) {
-      console.log(`Объект с ID ${entityId} не найден`);
+      notification.error(`Объект с ID ${entityId} не найден`);
       return;
     }
     this.props.appStore.addEntityToGroup(this.props.group.id, entityId);
@@ -40,7 +42,7 @@ export default class GroupEditForm extends React.Component {
     let entityId = Number(this.state.removeValue);
     let entity = this.props.appStore.getEntityById(entityId);
     if (!entity) {
-      console.log(`Объект с ID ${entityId} не найден`);
+      notification.error(`Объект с ID ${entityId} не найден`);
       return;
     }
     this.props.appStore.removeEntityFromGroup(this.props.group.id, entityId);

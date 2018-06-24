@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import {observer} from 'mobx-react';
+import { ToastContainer, Slide } from 'react-toastify';
 
 import Toolbar from "./Toolbar";
 import EntityEditForm from "./EntityEditForm";
@@ -18,6 +19,7 @@ class App extends Component {
 
     return (
       <Root>
+        <ToastContainer transition={Slide} />
         <Toolbar appStore={appStore} />
         {appStore.isAddingEntity && <EntityEditForm appStore={appStore} />}
         {appStore.editEntity && <EntityEditForm appStore={appStore} />}
