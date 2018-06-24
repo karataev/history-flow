@@ -17,6 +17,11 @@ export default class GroupItem {
     this.ids.push(entityId);
   }
 
+  removeEntityId(entityId) {
+    let index = this.ids.indexOf(entityId);
+    this.ids.splice(index, 1);
+  }
+
   get entities() {
     let result =  this.ids.map(id => _.find(this.allEntities, {id}));
     return result;

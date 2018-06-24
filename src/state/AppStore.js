@@ -83,6 +83,14 @@ export default class AppStore {
     storage.save(this.entities, this.groups);
   };
 
+  removeEntityFromGroup = (groupId, entityId) => {
+    let groupItem = _.find(this.groups, {id: groupId});
+    groupItem.removeEntityId(entityId);
+    let entity = this.getEntityById(entityId);
+    entity.visible = false;
+    storage.save(this.entities, this.groups);
+  };
+
   toggleGroupOpen = group => {
     group.isOpen = !group.isOpen;
     if (group.isOpen) this.selectGroup(group);

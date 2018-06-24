@@ -9,41 +9,74 @@ export default class GroupEditForm extends React.Component {
   };
 
   state = {
-    value: '',
+    addValue: '',
+    removeValue: '',
   };
 
-  onChange = e => {
-    this.setState({value: e.target.value});
+  onChangeAdd = e => {
+    this.setState({addValue: e.target.value});
   };
 
-  onSubmit = e => {
+  onChangeRemove = e => {
+    this.setState({removeValue: e.target.value});
+  };
+
+  onAdd = e => {
     e.preventDefault();
 
-    let entityId = Number(this.state.value);
+    let entityId = Number(this.state.addValue);
     let entity = this.props.appStore.getEntityById(entityId);
     if (!entity) {
       console.log(`Объект с ID ${entityId} не найден`);
       return;
     }
-    this.props.appStore.addEntityToGroup(this.props.group.id, Number(this.state.value));
-    this.setState({value: ''});
+    this.props.appStore.addEntityToGroup(this.props.group.id, entityId);
+    this.setState({addValue: ''});
+  };
+
+  onRemove = e => {
+    e.preventDefault();
+
+    let entityId = Number(this.state.removeValue);
+    let entity = this.props.appStore.getEntityById(entityId);
+    if (!entity) {
+      console.log(`Объект с ID ${entityId} не найден`);
+      return;
+    }
+    this.props.appStore.removeEntityFromGroup(this.props.group.id, entityId);
+    this.setState({removeValue: ''});
   };
 
   render() {
     return (
-      <form onSubmit={this.onSubmit}>
-        <input
-          type="text"
-          value={this.state.value}
-          onChange={this.onChange}
-          required
-          placeholder="id"
-        />
-        <input
-          type="submit"
-          value="Добавить"
-        />
-      </form>
+      <div>
+        <form onSubmit={this.onAdd}>
+          <input
+            type="text"
+            value={this.state.addValue}
+            onChange={this.onChangeAdd}
+            required
+            placeholder="id"
+          />
+          <input
+            type="submit"
+            value="Добавить"
+          />
+        </form>
+        <form onSubmit={this.onRemove}>
+          <input
+            type="text"
+            value={this.state.removeValue}
+            onChange={this.onChangeRemove}
+            required
+            placeholder="id"
+          />
+          <input
+            type="submit"
+            value="Удалить"
+          />
+        </form>
+      </div>
     )
   }
 }
