@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import {Tooltip} from 'react-tippy';
 
 const Root = styled.div`
 position: absolute;
@@ -32,13 +33,13 @@ border-radius: 50%;
 export default class EntitySegment extends React.Component {
 
   static propTypes = {
-    title: PropTypes.string.isRequired,
+    entity: PropTypes.object.isRequired,
     startPercent: PropTypes.number.isRequired,
     endPercent: PropTypes.number.isRequired,
   };
 
   render() {
-    const {title, startPercent, endPercent} = this.props;
+    const {entity, startPercent, endPercent} = this.props;
 
     return (
       <Root
@@ -47,7 +48,12 @@ export default class EntitySegment extends React.Component {
       >
         <Point pos={0} />
         <Point pos={100} />
-        <Title>{title}</Title>
+        <Tooltip
+          title={`${entity.start}-${entity.end}`}
+          theme="light"
+        >
+          <Title>{entity.title}</Title>
+        </Tooltip>
       </Root>
     )
   }

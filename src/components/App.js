@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import {observer} from 'mobx-react';
 import { ToastContainer, Slide } from 'react-toastify';
+import 'react-tippy/dist/tippy.css'
 
 import Toolbar from "./Toolbar";
 import Groups from "../groups/Groups";

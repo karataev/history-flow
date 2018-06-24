@@ -29,10 +29,9 @@ const EntityLine = observer(({appStore, entity}) => {
     <Root onClick={() => onClick(appStore, entity)}>
       <LineGraph/>
       <EntitySegment
-        title={entity.title}
+        entity={entity}
         startPercent={startPercent}
         endPercent={endPercent}
-
       />
     </Root>
   )
