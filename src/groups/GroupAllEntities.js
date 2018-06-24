@@ -28,8 +28,31 @@ class GroupAllEntities extends React.Component {
     group: PropTypes.object.isRequired,
   };
 
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      filter: '',
+    }
+  }
+
+  onFilterChange = e => {
+    this.setState({filter: e.target.value});
+  };
+
+  getFilteredEntities() {
+    const {group} = this.props;
+    const {filter} = this.state;
+    if (!filter) return group.entities;
+
+    return group.entities.filter(entity => {
+      return entity.title.toLowerCase().indexOf(filter.toLowerCase()) >= 0;
+    });
+  }
+
   render() {
     const {group, appStore} = this.props;
+    const entities = this.getFilteredEntities();
 
     return (
       <Root>
@@ -42,8 +65,16 @@ class GroupAllEntities extends React.Component {
             onClick={() => appStore.clearGroup(group)}
           >Скрыть всех</button>
         </ButtonsContainer>
+        <div>
+          <input
+            type="text"
+            placeholder="Фильтр"
+            value={this.state.filter}
+            onChange={this.onFilterChange}
+          />
+        </div>
         <ItemsContainer>
-          {group.entities.map(entity => (
+          {entities.map(entity => (
             <EntityGroupItem
               appStore={appStore}
               entity={entity}
