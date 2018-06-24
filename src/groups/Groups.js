@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import {observer} from 'mobx-react';
 
 import GroupFull from "./GroupFull";
+import GroupAllEntities from './GroupAllEntities';
 import GroupShort from "./GroupShort";
 
 const Root = styled.div`
@@ -43,7 +44,7 @@ class Groups extends React.Component {
               key={group.id}
             />
           ))}
-          <GroupFull
+          <GroupAllEntities
             appStore={appStore}
             group={appStore.groupAllEntities}
           />
