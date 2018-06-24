@@ -9,6 +9,7 @@ const Root = styled.div`
 margin-top: 10px;
 border: 1px solid #999;
 padding: 10px;
+position: relative;
 `;
 
 const ButtonsContainer = styled.div`
@@ -20,11 +21,21 @@ max-height: 500px;
 overflow: auto;
 `;
 
+const CloseX = styled.button`
+position: absolute;
+top: 0;
+right: 0;
+`;
+
 class GroupFull extends React.Component {
 
   static propTypes = {
     appStore: PropTypes.object.isRequired,
     group: PropTypes.object.isRequired,
+  };
+
+  onClose = () => {
+    this.props.appStore.toggleGroupOpen(this.props.group);
   };
 
   render() {
@@ -33,6 +44,7 @@ class GroupFull extends React.Component {
     return (
       <Root>
         <h3>{group.title}</h3>
+        <CloseX onClick={this.onClose}>X</CloseX>
         <ButtonsContainer>
           <button
             onClick={() => appStore.selectGroup(group)}
