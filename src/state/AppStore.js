@@ -66,6 +66,7 @@ export default class AppStore {
 
   toggleGroupOpen = group => {
     group.isOpen = !group.isOpen;
+    if (group.isOpen) this.selectGroup(group);
   };
 
   save = () => {

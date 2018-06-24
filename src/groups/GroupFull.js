@@ -36,10 +36,10 @@ class GroupFull extends React.Component {
         <ButtonsContainer>
           <button
             onClick={() => appStore.selectGroup(group)}
-          >Выделить все</button>
+          >Показать всех</button>
           <button
             onClick={() => appStore.clearGroup(group)}
-          >Сбросить все</button>
+          >Скрыть всех</button>
         </ButtonsContainer>
         <ItemsContainer>
           {group.entities.map(entity => (
