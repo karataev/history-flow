@@ -3,6 +3,7 @@ import _ from 'lodash';
 
 import GroupItem from "./GroupItem";
 import storage from './storage';
+import notification from './notification';
 
 
 function getNextId(collection) {
@@ -100,6 +101,7 @@ export default class AppStore {
 
   save = () => {
     storage.copyToClipboard(this.entities, this.groups);
+    notification.success('Скопировано в буфер обмена');
   };
 
   get graphEntities() {
